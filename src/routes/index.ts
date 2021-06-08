@@ -1,19 +1,17 @@
 //imports
-import {Router} from 'express'
-import search from './search'
+import { Router, Request, Response, NextFunction } from "express";
+import search from "./search";
 
-const router = Router()
+const router = Router();
 
 //routers
 
-router.use('/search', search);
-
+router.use("/search", search);
 
 //Get a Home de prueba
-router.get('/',(req,res)=>{
-    res.send('Pagina Principal')
-})
-
+router.get("/", (req: Request, res: Response) => {
+    res.send("Pagina Principal");
+});
 
 //exports
 export default router;
