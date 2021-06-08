@@ -1,12 +1,19 @@
+//imports
 import {Router} from 'express'
-import home from './home'
-// const home = require('./home')
+import search from './search'
+
 const router = Router()
 
-router.use('/index',(req,res)=>{
-    res.send('Index')
+//routers
+
+router.use('/search', search);
+
+
+//Get a Home de prueba
+router.get('/',(req,res)=>{
+    res.send('Pagina Principal')
 })
 
-router.use('/home',home)
 
+//exports
 export default router;
