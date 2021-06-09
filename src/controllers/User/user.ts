@@ -14,8 +14,11 @@ app.get("/getallusers", (req, res) => {
 });
 
 //For testing purposes, it loads users from the seeders to DB
-const createDummyUsers = () => {
+export const createDummyUsers =  () => {
     users.map((user) => {
         db.User.create(user);
     });
 };
+
+
+
