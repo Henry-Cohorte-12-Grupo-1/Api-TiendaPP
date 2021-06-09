@@ -1,34 +1,76 @@
-import {
-    Model,
-    Column,
-    Table,
-    CreatedAt,
-    UpdatedAt,
-    AllowNull,
-} from "sequelize-typescript";
-@Table
-export class User extends Model<User> {
-    @Column
-    username!: string;
+"use strict";
 
-    @Column
-    password!: string;
+import { Model, UUIDV4 } from "sequelize";
 
-    @Column
-    firstName!: string;
+// import {Role}  from './roles'
 
-    @Column
-    lastName!: string;
-
-    @AllowNull(true)
-    @Column
-    phoneNum!: number;
-
-    @CreatedAt
-    @Column
-    createdAt!: Date;
-
-    @UpdatedAt
-    @Column
-    updatedAt!: Date;
+// These are all the attributes in the User model
+interface UserAttributes {
+    userId: string;
+    username: string;
+    password: string;
+    email: string;
+    firstName: string;
+    lastName: string;
 }
+
+module.exports = (sequelize: any, DataTypes: any) => {
+    class User extends Model<UserAttributes> implements UserAttributes {
+        /**
+         * Helper method for defining associations.
+         * This method is not a part of Sequelize lifecycle.
+         * The `models/index` file will call this method automatically.
+         */
+        userId!: string;
+        username!: string;
+        password!: string;
+        email!: string;
+        firstName!: string;
+        lastName!: string;
+
+        static associate(models: any) {
+            // define association here
+            User.belongsTo(models.Role, {
+                as: "role",
+                foreignKey: "roleId",
+            });
+        }
+    }
+    User.init(
+        {
+            userId: {
+                type: DataTypes.UUID,
+                defaultValue: UUIDV4,
+                allowNull: false,
+                primaryKey: true,
+            },
+            username: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                unique: true,
+            },
+            password: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            email: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                unique: true,
+            },
+            firstName: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            lastName: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+        },
+        {
+            sequelize,
+            modelName: "User",
+        }
+    );
+    return User;
+};
