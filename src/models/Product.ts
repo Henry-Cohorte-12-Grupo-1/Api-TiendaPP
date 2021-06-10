@@ -6,8 +6,8 @@ interface ProductAttributes {
     productId: string;
     name: string;
     price: number;
-    status: string;
     quantity: number;
+    description: string;
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -18,8 +18,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
         productId!: string;
         name!: string;
         price!: number;
-        status!: string;
         quantity!: number;
+        description!: string;
 
         static associate(models: any) {
             //associations
@@ -27,8 +27,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 foreignKey: "userId",
                 as: "sellerId",
             });
-            Product.hasMany(models.Image)
-            Product.belongsTo(models.Category)
+            Product.hasMany(models.Image, { foreignKey: "productId" });
+            Product.belongsTo(models.Category, { foreignKey: "categoryId" });
+            Product.hasMany(models.CartItem, { foreignKey: "productId" });
         }
     }
     Product.init(
@@ -48,13 +49,13 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            status: {
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
             quantity: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
+            },
+            description: {
+                type: DataTypes.STRING,
+                allowNull: true,
             },
         },
         {
