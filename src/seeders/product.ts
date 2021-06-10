@@ -6,6 +6,7 @@ export const products = [
         status: "in_stock",
         quantity: 80,
         description: "Television 50'",
+        categoryId: 1
     },
 
     {
@@ -15,6 +16,7 @@ export const products = [
         status: "running_low",
         quantity: 9,
         description: "Apple TV",
+        categoryId: 1
     },
 
     {
@@ -23,6 +25,7 @@ export const products = [
         price: 179,
         quantity: 0,
         description: "Video-Reality Headset",
+        categoryId: 1
     },
     {
         productId: "2840efc4-c172-4961-bf8d-78c1bad3d1ee",
@@ -30,12 +33,14 @@ export const products = [
         price: 38.5,
         quantity: 139,
         description: "Mug",
+        categoryId: 2
     },
     {
         productId: "41e63e10-b85b-4a2f-a41c-27434fa35a9f",
         name: "Burgess Insect Mosquito Bug Propane Fogger Sprayer",
         price: 85.45,
         quantity: 4,
+        categoryId: 2
     },
     {
         productId: "c04d0fa6-a561-470b-9907-529ee916ca0d",
@@ -43,6 +48,7 @@ export const products = [
         price: 3,
         quantity: 0,
         description: "Digital Kitchen Meat Thermometer",
+        categoryId: 2
     },
     {
         productId: "32cf621a-9551-43ac-81fe-150938dd706f",
@@ -50,6 +56,7 @@ export const products = [
         price: 59.97,
         quantity: 92,
         description: "Backpack",
+        categoryId: 3
     },
     {
         productId: "3490bb8b-3a0d-41a2-86aa-32922c57edbb",
@@ -57,6 +64,7 @@ export const products = [
         price: 28.75,
         quantity: 7,
         description: "Perfume",
+        categoryId: 3
     },
     {
         productId: "3d56de88-5f25-433f-9c3c-1dfa30cce15a",
@@ -64,5 +72,6 @@ export const products = [
         price: 44,
         quantity: 0,
         description: "Haircutting kit",
+        categoryId: 3
     },
 ];
