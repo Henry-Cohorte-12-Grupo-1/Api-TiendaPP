@@ -3,6 +3,7 @@ import { Router, Request, Response, NextFunction } from "express";
 import search from "./search";
 import home from "./home";
 import products from "./products";
+import productDetails from "./productDetails";
 
 const router = Router();
 
@@ -13,6 +14,8 @@ router.use("/products", products)
 router.use("/home", home)
 
 router.use("/search", search);
+
+router.use("/productDetails", productDetails);
 
 //Get a Home de prueba
 router.get("/", (req: Request, res: Response) => {
