@@ -14,7 +14,6 @@ db.sequelize
         createDummyUsers()
         createRoles()
         */
-        
         app.listen(port, () => {
             console.log(`El server esta corriendo en el puerto ${port}`);
         });
