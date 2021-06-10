@@ -30,7 +30,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
         static associate(models: any) {
             // define association here
-            User.belongsTo(models.Role, {as: 'role', foreignKey: 'roleId'});
+            User.belongsTo(models.Role, {as: 'user', foreignKey: 'roleId'});
             User.hasMany(models.Product)
             User.hasOne(models.Cart, {as: 'cart', foreignKey: 'cartId'})
         }

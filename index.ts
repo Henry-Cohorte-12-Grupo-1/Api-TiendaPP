@@ -10,10 +10,10 @@ db.sequelize
     .sync({ force: false })
     .then(() => {
         console.log("base de datos conectada");
-        /*
+        
         createDummyUsers()
         createRoles()
-        */
+        
         
         app.listen(port, () => {
             console.log(`El server esta corriendo en el puerto ${port}`);

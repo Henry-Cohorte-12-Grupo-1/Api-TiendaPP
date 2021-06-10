@@ -21,7 +21,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
         static associate(models: any) {
             // define association here
-            Cart.belongsTo(models.User, {as: 'user', foreignKey: 'cartId'})
+            Cart.belongsTo(models.User, {as: 'user', foreignKey: 'test'})
         
         }
     }
