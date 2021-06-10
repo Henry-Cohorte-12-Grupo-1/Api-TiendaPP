@@ -3,10 +3,13 @@ import { Router, Request, Response, NextFunction } from "express";
 import search from "./search";
 import home from "./home";
 import products from "./products";
+import categories from "./categories";
 
 const router = Router();
 
 //routers
+
+router.use("/categories", categories)
 
 router.use("/products", products)
 
