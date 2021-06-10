@@ -1,37 +1,32 @@
 "use strict";
 
+import { Model, UUIDV4 } from "sequelize";
 
-import {Model, UUIDV4} from 'sequelize'
-
-
-interface ProductAttributes{
+interface ProductAttributes {
     productId: string;
     name: string;
-    sellerId: number;
     price: number;
     status: string;
-    inventoryId: number;
-    categoryId: number;
-    image: string
+    quantity: number;
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
-    class Product extends Model<ProductAttributes> implements ProductAttributes{
-
-
+    class Product
+        extends Model<ProductAttributes>
+        implements ProductAttributes
+    {
         productId!: string;
         name!: string;
-        sellerId!: number;
         price!: number;
         status!: string;
-        inventoryId!: number;
-        categoryId!: number;
-        image!: string;
+        quantity!: number;
 
-
-        static associate(models:any){
+        static associate(models: any) {
             //associations
-            Product.belongsTo(models.User)
+            Product.belongsTo(models.User, {
+                foreignKey: "userId",
+                as: "sellerId",
+            });
         }
     }
     Product.init(
@@ -41,36 +36,24 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 defaultValue: UUIDV4,
                 allowNull: false,
                 primaryKey: true,
+                unique: true,
             },
             name: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                unique: true,
-            },
-            sellerId: {
-                type: DataTypes.INTEGER,
                 allowNull: false,
             },
             price: {
                 type: DataTypes.STRING,
                 allowNull: false,
-    
             },
             status: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            inventoryId: {
-                type: DataTypes.STRING,
+            quantity: {
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
-            categoryId: {
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
-            image:{
-                type: DataTypes.STRING
-            }
         },
         {
             sequelize,
@@ -78,5 +61,4 @@ module.exports = (sequelize: any, DataTypes: any) => {
         }
     );
     return Product;
-
-}
+};

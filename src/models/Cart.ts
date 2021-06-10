@@ -4,7 +4,6 @@ import { Model } from "sequelize";
 
 interface CartAttributes {
     cartId: number;
-    userId: number;
     totalPrice: number;
 }
 
@@ -16,13 +15,11 @@ module.exports = (sequelize: any, DataTypes: any) => {
          * The `models/index` file will call this method automatically.
          */
         cartId!: number;
-        userId!: number;
-        totalPrice!:number;
+        totalPrice!: number;
 
         static associate(models: any) {
             // define association here
-            Cart.belongsTo(models.User, {as: 'user', foreignKey: 'test'})
-        
+            Cart.belongsTo(models.User, { foreignKey: "userId" });
         }
     }
 
@@ -34,16 +31,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 allowNull: false,
                 autoIncrement: true,
             },
-            userId: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                unique: true,
-            },
-            totalPrice:{
+            totalPrice: {
                 type: DataTypes.FLOAT,
                 allowNull: false,
-                unique: true
-            }
+            },
         },
         {
             sequelize,
