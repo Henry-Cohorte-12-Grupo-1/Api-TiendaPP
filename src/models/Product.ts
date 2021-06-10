@@ -23,10 +23,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
         static associate(models: any) {
             //associations
-            Product.belongsTo(models.User, {
-                foreignKey: "userId",
-                as: "sellerId",
-            });
+            Product.belongsTo(models.User, { foreignKey: "userId" });
             Product.hasMany(models.Image, { foreignKey: "productId" });
             Product.belongsTo(models.Category, { foreignKey: "categoryId" });
             Product.hasMany(models.CartItem, { foreignKey: "productId" });

@@ -22,7 +22,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
             // 'hasMany' afecta models.User
 
-            Role.hasMany(models.User, { as: "role", foreignKey: "roleId" });
+            Role.hasMany(models.User, { foreignKey: "roleId" });
         }
     }
 

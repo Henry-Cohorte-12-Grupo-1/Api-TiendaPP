@@ -1,8 +1,6 @@
-import { v4 as uuidv4 } from "uuid";
-
 export const users = [
     {
-        userId: uuidv4(),
+        userId: "6d2ba377-b219-4925-b6df-4cbc8575ce50",
         username: "username0",
         password: "pass",
         email: "useremail",
@@ -11,7 +9,7 @@ export const users = [
         roleId: 1,
     },
     {
-        userId: uuidv4(),
+        userId: "68f58789-37b2-4a60-838e-93c8eedf7fcc",
         username: "username1",
         password: "pass",
         email: "useremail1",
@@ -20,7 +18,7 @@ export const users = [
         roleId: 2,
     },
     {
-        userId: uuidv4(),
+        userId: "9de81b64-1c4a-49d7-b9c5-7554d1d35df2",
         username: "username2",
         password: "pass",
         email: "useremai2",
