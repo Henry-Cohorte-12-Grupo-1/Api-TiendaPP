@@ -1,5 +1,5 @@
 "use strict";
-const { Model } = require("sequelize");
+import { Model } from 'sequelize'
 
 interface ImageAttributes {
     imageId: string;

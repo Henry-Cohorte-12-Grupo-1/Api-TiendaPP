@@ -10,16 +10,21 @@ async function productDetailsController(req: express.Request, res: express.Respo
             where: {
                 productId: id
             },
-            include: {
+            include: [{
+                model: db.Review,
+                attributes: ['score', 'review']
+            },
+            {
                 model: db.Image,
                 attributes: ['url']
-            }
+            }]
+
         })
         console.log(result)
         return res.send(result)
     }
-    catch (error) {
-        return res.send({ error: "Not found" })
+    catch (error: any) {
+        return res.send(error.message)
     }
 
 
