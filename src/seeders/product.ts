@@ -8,7 +8,6 @@ export const products = [
         quantity: 80,
         description: "Television 50'",
         categoryId: 1,
-        reviews: ["Muy buena la tele che", "La tele zafa, pero me sobra una pulgada de las 50 que trae"]
     },
 
     {
@@ -39,8 +38,6 @@ export const products = [
         quantity: 139,
         description: "Mug",
         categoryId: 2,
-        reviews: ["Alta tacita para tomar mis deliciosas infusiones de té de hierbas frescas del himalaya recolectadas por un par de nepaleses explotados", "Una porquería esta taza, está pensada para los caretas que toman té de hierbas del monte."]
-
     },
     {
         productId: "41e63e10-b85b-4a2f-a41c-27434fa35a9f",

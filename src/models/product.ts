@@ -8,7 +8,6 @@ interface ProductAttributes {
     price: number;
     quantity: number;
     description: string;
-    reviews: string[]
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -20,7 +19,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
         price!: number;
         quantity!: number;
         description!: string;
-        reviews!: string[]
 
         static associate(models: any) {
             //associations
@@ -56,10 +54,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 type: DataTypes.STRING,
                 allowNull: true,
             },
-            reviews: {
-                type: DataTypes.ARRAY(DataTypes.TEXT),
-                allowNull: true
-            }
         },
         {
             sequelize,
