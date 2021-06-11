@@ -5,6 +5,7 @@ import { createRoles } from "../role/role";
 import { createDummyProducts } from "../product/product";
 import { createDummyCategories } from "../category/category";
 import { createDummyImages } from "../image/image";
+import { createDummyReviews } from "../review/review";
 
 //This is supposed to load all dummy data from the seeders folder
 //then you can use the routes in each controller to get the data
@@ -15,5 +16,6 @@ export function loadDummyData(req: Request, res: Response) {
     createDummyCategories();
     createDummyProducts();
     createDummyImages();
+    createDummyReviews();
     res.sendStatus(200);
 }
