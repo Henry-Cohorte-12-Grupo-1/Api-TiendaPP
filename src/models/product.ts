@@ -1,6 +1,6 @@
 "use strict";
 
-import { Model, UUIDV4 } from "sequelize";
+import { Model, Sequelize, UUIDV4 } from "sequelize";
 
 interface ProductAttributes {
     productId: string;
@@ -8,18 +8,19 @@ interface ProductAttributes {
     price: number;
     quantity: number;
     description: string;
+    reviews: string[]
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
     class Product
         extends Model<ProductAttributes>
-        implements ProductAttributes
-    {
+        implements ProductAttributes {
         productId!: string;
         name!: string;
         price!: number;
         quantity!: number;
         description!: string;
+        reviews!: string[]
 
         static associate(models: any) {
             //associations
@@ -54,6 +55,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 type: DataTypes.STRING,
                 allowNull: true,
             },
+            reviews: {
+                type: DataTypes.ARRAY(DataTypes.TEXT),
+                allowNull: true
+            }
         },
         {
             sequelize,
