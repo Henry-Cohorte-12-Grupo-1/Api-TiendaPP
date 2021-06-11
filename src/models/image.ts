@@ -3,6 +3,7 @@ const { Model } = require("sequelize");
 
 interface ImageAttributes {
     imageId: string;
+    url: string;
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -13,6 +14,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
          * The `models/index` file will call this method automatically.
          */
         imageId!: string;
+        url!: string
 
         static associate(models: any) {
             // define association here
@@ -22,6 +24,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     Image.init(
         {
             imageId: DataTypes.STRING,
+            url: DataTypes.STRING
         },
         {
             sequelize,
