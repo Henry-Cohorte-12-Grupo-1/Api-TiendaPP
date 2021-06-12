@@ -1,10 +1,10 @@
 "use strict";
 import { Model } from "sequelize";
 
-interface CategoryAttributes {
+export interface CategoryAttributes {
     categoryId: number;
     name: string;
-    description: string;
+    // description: string;
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -19,7 +19,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
          */
         categoryId!: number;
         name!: string;
-        description!: string;
+        // description!: string;
 
         static associate(models: any) {
             // define association here
@@ -28,9 +28,13 @@ module.exports = (sequelize: any, DataTypes: any) => {
     }
     Category.init(
         {
-            categoryId: DataTypes.INTEGER,
+            categoryId: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            },
             name: DataTypes.STRING,
-            description: DataTypes.STRING,
+            // description: DataTypes.STRING,
         },
         {
             sequelize,
