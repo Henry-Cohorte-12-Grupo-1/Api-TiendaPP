@@ -1,6 +1,6 @@
 "use strict";
 
-import { Model, UUIDV4 } from "sequelize";
+import { Model, Sequelize, UUIDV4 } from "sequelize";
 
 interface ProductAttributes {
     productId: string;
@@ -13,8 +13,7 @@ interface ProductAttributes {
 module.exports = (sequelize: any, DataTypes: any) => {
     class Product
         extends Model<ProductAttributes>
-        implements ProductAttributes
-    {
+        implements ProductAttributes {
         productId!: string;
         name!: string;
         price!: number;
@@ -25,6 +24,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
             //associations
             Product.belongsTo(models.User, { foreignKey: "userId" });
             Product.hasMany(models.Image, { foreignKey: "productId" });
+            Product.hasMany(models.Review, { foreignKey: "productId" });
             Product.belongsTo(models.Category, { foreignKey: "categoryId" });
             Product.hasMany(models.CartItem, { foreignKey: "productId" });
         }
