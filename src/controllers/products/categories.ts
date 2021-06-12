@@ -1,9 +1,12 @@
 import express from 'express'
+import db from '../../models';
 const categories = require('../../data/categories');
 
-function categoriesController (req:express.Request, res:express.Response){
+async function categoriesController (req:express.Request, res:express.Response){
     //categorias de prueba 
-    res.send(categories)
+    let resp = await db.Category.findAll()
+    res.send(resp)
+
 }
 
 export default categoriesController
