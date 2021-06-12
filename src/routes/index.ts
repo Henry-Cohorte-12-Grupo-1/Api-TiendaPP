@@ -12,6 +12,7 @@ import categories from "./categories";
 import updateCategories from "./updateCategories";
 
 import productDetails from "./productDetails";
+import userProducts from "./userProducts"
 
 
 const router = Router();
@@ -35,6 +36,7 @@ router.use("/user", user);
 router.use("/product", product);
 
 router.use("/productDetails", productDetails);
+router.use("/userName", userProducts);
 
 //Get a Home de prueba
 router.get("/", (req: Request, res: Response) => {
