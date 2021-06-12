@@ -3,7 +3,6 @@ import { Model } from 'sequelize'
 
 interface ImageAttributes {
     imageId: string;
-    url: string;
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -23,8 +22,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     }
     Image.init(
         {
-            imageId: DataTypes.STRING,
-            url: DataTypes.STRING
+            imageId: DataTypes.STRING
         },
         {
             sequelize,

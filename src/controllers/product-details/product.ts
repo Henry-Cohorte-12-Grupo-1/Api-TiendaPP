@@ -16,7 +16,7 @@ async function productDetailsController(req: express.Request, res: express.Respo
             },
             {
                 model: db.Image,
-                attributes: ['url']
+                attributes: ['imageId']
             }]
 
         })
