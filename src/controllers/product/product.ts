@@ -49,3 +49,13 @@ export async function createProduct (req:Request, res:Response){
     db
 
 }
+
+
+export async function getProduct(req:Request , res:Response) {
+    let {product} = req.query
+    // let resp = await db.Product.findAll({include:db.Image})
+
+    let resp = await db.Product.findByPk(product,{include:db.Image})
+
+    res.send(resp)
+}
