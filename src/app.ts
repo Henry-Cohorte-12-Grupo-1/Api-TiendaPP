@@ -24,7 +24,7 @@ app.use(
 	})
 );
 
-app.use('/', routes);
+app.use('/api', routes);
 
 
 // app.get('/',(req,res)=>{
