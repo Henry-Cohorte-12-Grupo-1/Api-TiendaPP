@@ -1,33 +1,35 @@
 "use strict";
 import { Model } from 'sequelize'
 
-interface ImageAttributes {
-    imageId: string;
+interface ReviewAttributes {
+    score: number;
+    review: string;
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
-    class Image extends Model<ImageAttributes> implements ImageAttributes {
+    class Review extends Model<ReviewAttributes> implements ReviewAttributes {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
          * The `models/index` file will call this method automatically.
          */
-        imageId!: string;
-        url!: string
+        score!: number;
+        review!: string
 
         static associate(models: any) {
             // define association here
-            Image.belongsTo(models.Product, { foreignKey: "productId" });
+            Review.belongsTo(models.Product, { foreignKey: "productId" });
         }
     }
-    Image.init(
+    Review.init(
         {
-            imageId: DataTypes.STRING
+            score: DataTypes.INTEGER,
+            review: DataTypes.STRING
         },
         {
             sequelize,
-            modelName: "Image",
+            modelName: "Review",
         }
     );
-    return Image;
+    return Review;
 };

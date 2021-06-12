@@ -9,6 +9,8 @@ import product from "./product";
 
 import products from "./products";
 import categories from "./categories";
+import updateCategories from "./updateCategories";
+
 import productDetails from "./productDetails";
 
 
@@ -19,11 +21,12 @@ const router = Router();
 
 router.use("/home", home);
 
-router.use("/categories", categories)
+router.use("/categories", categories);
+router.use("/updateCategories", updateCategories);
 
-router.use("/products", products)
+router.use("/products", products);
 
-router.use("/home", home)
+router.use("/home", home);
 
 
 router.use("/search", search);
