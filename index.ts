@@ -5,7 +5,7 @@ const port = process.env.API_PORT || 3001;
 
 db.sequelize
     //.sync({ force: true, logging: false })
-    .sync({ force: true })
+    .sync({ force: true, logging: false })
     .then(() => {
         console.log("base de datos conectada");
         app.listen(port, () => {
