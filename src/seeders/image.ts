@@ -1,7 +1,7 @@
 export const images = [
     {
         imageId: "lvstjh4mf6ajr72dvseh",
-        productId: "13c22a6b-fa8e-4640-ad5c-132e0e61a4f3",
+        productId: "2840efc4-c172-4961-bf8d-78c1bad3d1ee",
     },
     {
         imageId: "tpkvs4nrf4tyjawpf2qv",

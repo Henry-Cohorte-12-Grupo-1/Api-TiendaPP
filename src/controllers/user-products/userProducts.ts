@@ -23,8 +23,17 @@ async function userProductsController(req: express.Request, res: express.Respons
             const allProducts = await db.Product.findAll({
                 where: {
                     userId: userProductsId
-                }
+                },
+                include: [{
+                    model: db.Image,
+                    attributes: ['imageId']
+                },
+                {
+                    model: db.Category,
+                    attributes: ['name']
+                }]
             })
+
             return res.send(allProducts)
         }
     }
