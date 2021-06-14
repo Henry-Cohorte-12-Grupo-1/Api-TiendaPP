@@ -26,9 +26,9 @@ export const createDummyProducts = () => {
 
 export async function createProduct(req: Request, res: Response) {
 
-    let { name, description, price, categoryId, images, quantity } = req.body
+    let { name, description, price, categoryId, joinedImage, quantity } = req.body
     //categorias de prueba
-    const imagesArr: string[] = images && images.split(" - ")
+    const imagesArr: string[] = joinedImage.length && joinedImage.split(" - ")
 
     price = parseInt(req.body.price)
     categoryId = parseInt(req.body.categoryId)
@@ -67,3 +67,4 @@ export async function getProduct(req: Request, res: Response) {
 
     res.send(resp)
 }
+
