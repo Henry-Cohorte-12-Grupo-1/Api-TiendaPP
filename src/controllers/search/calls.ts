@@ -34,3 +34,21 @@ export async function dbProductRequest(
     console.log("caught", error.message);
   }
 }
+
+export async function dbImageRequest(id: string) {
+  try {
+    return db.Product.findOne({
+      where: {
+        productId: id,
+      },
+      include: [
+        {
+          model: db.Image,
+          attributes: ["imageId"],
+        },
+      ],
+    });    
+  } catch (error:any) {
+    console.log("caught", error.message);
+  }
+}
