@@ -1,26 +1,26 @@
 export const images = [
     {
-        imageId: "lvstjh4mf6ajr72dvseh",
+        imageId: "dvyddtnftabavzbev4yx",
         productId: "2840efc4-c172-4961-bf8d-78c1bad3d1ee",
     },
     {
-        imageId: "tpkvs4nrf4tyjawpf2qv",
+        imageId: "ph4gxrss5oegofbvhp8e",
         productId: "13c22a6b-fa8e-4640-ad5c-132e0e61a4f3",
     },
     {
-        imageId: "ixmctfqll30bfquyisbt",
+        imageId: "kwd9cdmnpip1otqkoiqk",
         productId: "13c22a6b-fa8e-4640-ad5c-132e0e61a4f3",
     },
     {
-        imageId: "kd2bvuvcdsh4igbe9xtc",
+        imageId: "rxvmgqsp4aygelsancg1",
         productId: "cce405a8-873b-4ceb-a9b1-8fd6f4baf250",
     },
     {
-        imageId: "b7tcn1mrbh9sg8sfmy21",
+        imageId: "mohmuoq3g2plw7h3fnfi",
         productId: "cce405a8-873b-4ceb-a9b1-8fd6f4baf250",
     },
     {
-        imageId: "uog9apc3tiszomoglniq",
+        imageId: "zqwl66kukowyhj5ku9oq",
         productId: "9a09e1fa-e7ae-47bd-acb3-0bffaf012d81",
     },
     {
@@ -43,11 +43,8 @@ export const images = [
         imageId: "fcvqq3mlo0vwoymt6jnn",
         productId: "3d56de88-5f25-433f-9c3c-1dfa30cce15a",
     },
-
-
-
     {
-        imageId: "t0eqrvs1zjci5e4t36jb",
+        imageId: "c0guip4dmvubt6qo0rrf",
         productId: "9a09e1fa-e7ae-47bd-acb3-0bffaf012d81",
     },
 
