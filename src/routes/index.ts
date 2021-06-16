@@ -13,6 +13,7 @@ import updateCategories from "./updateCategories";
 
 import productDetails from "./productDetails";
 import userProducts from "./userProducts"
+import orders from "./orders";
 
 
 const router = Router();
@@ -36,6 +37,7 @@ router.use("/search", search);
 router.use("/dummyData", dummyData);
 router.use("/user", user);
 router.use("/product", product);
+router.use("/orders", orders)
 
 router.use("/productDetails", productDetails);
 router.use("/userName", userProducts);
