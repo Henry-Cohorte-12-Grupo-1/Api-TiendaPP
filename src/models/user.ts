@@ -72,11 +72,11 @@ module.exports = (sequelize: any, DataTypes: any) => {
             },
             role: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
+                allowNull: true,
             },
             code: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                allowNull: true,
             },
         },
         {

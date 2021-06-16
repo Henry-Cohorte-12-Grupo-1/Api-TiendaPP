@@ -26,7 +26,7 @@ export async function Mailer(firstName:string,lastName:string,email:string,usern
     subject: "Welcome to Tiendapp", // Subject line
     text: `Welcome to Tiendapp`, // plain text body
     html: `<b>Congratulations ${firstName}! You're almost set to start using Tiendapp.
-    Just click the button below to validate your email address.</b><a href="18.229.137.129/validate?id=${code}">VALIDATE EMAIL</a> 
+    Just click the button below to validate your email address.</b><a href="http://localhost:3000/validate?id=${code}">VALIDATE EMAIL</a> 
     <div><p>Account Details</p><p>Username: ${username}</p><p>Email: ${email}</p><p>Name: ${firstName} ${lastName}</p></div>`, // html body
   });
 
