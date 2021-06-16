@@ -85,7 +85,6 @@ export function getCart(req: Request, res: Response) {
         .catch((error: object) => res.send(error));
 }
 
-
 //sets quantity of cart item
 //body: userId, productId, quantity
 export async function setCartItemQuantity(req: Request, res: Response) {
@@ -110,6 +109,7 @@ export async function setCartItemQuantity(req: Request, res: Response) {
     } else {
         res.sendStatus(400);
     }
+}
 
 //delete all items from CartItems model
 export function deleteCartItems(req: Request, res: Response) {
@@ -132,5 +132,4 @@ export function deleteCartItems(req: Request, res: Response) {
         .catch((error: object) => {
             res.status(400).send(error);
         });
-
 }
