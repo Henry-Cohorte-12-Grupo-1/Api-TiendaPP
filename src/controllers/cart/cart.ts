@@ -70,14 +70,17 @@ export function getTotalCartPrice(userId: string) {
         });
 }
 
+//this returns all products on the user's cart
 export function getCart(req: Request, res: Response) {
     let { userId } = req.body;
-    const userCart = db.CartItem.findAll({
-        where: userId,
+    db.CartItem.findAll({
+        where: { userId },
         include: {
             model: db.Product,
         },
     })
-        .then(() => res.send(userCart))
+        .then((cartItems: Array<object>) => {
+            res.send(cartItems);
+        })
         .catch((error: object) => res.send(error));
 }
