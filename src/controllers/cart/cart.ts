@@ -84,3 +84,26 @@ export function getCart(req: Request, res: Response) {
         })
         .catch((error: object) => res.send(error));
 }
+
+//delete all items from CartItems model
+export function deleteCartItems(req: Request, res: Response) {
+    let { userId, productId } = req.body;
+    db.CartItem.destroy({
+        where: {
+            userId,
+            productId,
+        },
+
+        force: true,
+    })
+        .then((result: number) => {
+            if (!result) {
+                res.status(400).send('Item not found or already deleted');
+            } else {
+                res.send('item deleted');
+            }
+        })
+        .catch((error: object) => {
+            res.status(400).send(error);
+        });
+}
