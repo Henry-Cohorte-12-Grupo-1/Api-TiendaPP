@@ -84,3 +84,29 @@ export function getCart(req: Request, res: Response) {
         })
         .catch((error: object) => res.send(error));
 }
+
+//sets quantity of cart item
+//body: userId, productId, quantity
+export async function setCartItemQuantity(req: Request, res: Response) {
+    let { userId, productId, quantity } = req.body;
+    let qty: number = parseInt(quantity);
+    if (qty > 0) {
+        let foundItem = await db.CartItem.findOne({
+            where: {
+                userId,
+                productId,
+            },
+        }).catch((error: object) => res.send(error));
+
+        if (foundItem) {
+            foundItem.quantity = qty;
+            await foundItem.save();
+            updateOrCreateCartPrice(userId);
+            res.sendStatus(200);
+        } else {
+            res.sendStatus(400);
+        }
+    } else {
+        res.sendStatus(400);
+    }
+}
