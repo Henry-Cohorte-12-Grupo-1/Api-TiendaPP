@@ -3,15 +3,16 @@ import express, { Request, Response } from 'express';
 import {Role} from '../../interfaces/role' 
 
 const validateAccount = async (req: express.Request, res: express.Response) => {
-    const id = req.query;
+    const {id} = req.query;
     console.log(id)
-
+    
     let resp = await db.Users.update({ role: Role.user}, {
         where: {
           code: id
         }
       });
-
+      
+      console.log(resp)
     res.send({resp})
 }
 
