@@ -1,46 +1,45 @@
 //imports
-import { Router, Request, Response, NextFunction } from "express";
-import search from "./search";
-import home from "./home";
+import { Router, Request, Response, NextFunction } from 'express';
+import search from './search';
+import home from './home';
+import cart from './cart';
+import dummyData from './dummyData';
+import user from './user';
+import product from './product';
 
-import dummyData from "./dummyData";
-import user from "./user";
-import product from "./product";
+import products from './products';
+import categories from './categories';
+import updateCategories from './updateCategories';
 
-import products from "./products";
-import categories from "./categories";
-import updateCategories from "./updateCategories";
-
-import productDetails from "./productDetails";
-import userProducts from "./userProducts"
-
+import productDetails from './productDetails';
+import userProducts from './userProducts';
 
 const router = Router();
 
 //routers
 
+router.use('/home', home);
 
-router.use("/home", home);
+router.use('/categories', categories);
+router.use('/updateCategories', updateCategories);
 
-router.use("/categories", categories);
-router.use("/updateCategories", updateCategories);
+router.use('/products', products);
 
-router.use("/products", products);
+router.use('/home', home);
 
-router.use("/home", home);
+router.use('/search', search);
+router.use('/dummyData', dummyData);
+router.use('/user', user);
+router.use('/product', product);
 
+router.use('/productDetails', productDetails);
+router.use('/userName', userProducts);
 
-router.use("/search", search);
-router.use("/dummyData", dummyData);
-router.use("/user", user);
-router.use("/product", product);
-
-router.use("/productDetails", productDetails);
-router.use("/userName", userProducts);
+router.use('/cart', cart);
 
 //Get a Home de prueba
-router.get("/", (req: Request, res: Response) => {
-    res.send("Pagina Principal");
+router.get('/', (req: Request, res: Response) => {
+    res.send('Pagina Principal');
 });
 
 //exports
