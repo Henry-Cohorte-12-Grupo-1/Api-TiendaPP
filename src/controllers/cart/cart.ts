@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { cartItems } from '../../seeders/cartitems';
+import { cartItems } from '../../seeders/cartItems';
 import app from '../../app';
 import db from '../../models';
 import categoriesController from '../products/categories';
@@ -20,26 +20,49 @@ export function getAllUsers(req: Request, res: Response) {
 */
 
 //For testing purposes, it loads users from the seeders to DB
-export const createDummyCartItems = () => {
-    cartItems.map(async (cartItem: object) => {
-        await db.CartItem.create(cartItem);
-    });
+
+async function adder(item: any, model: any) {
+    try {
+        return await model.create(item);
+    } catch (error) {
+        return console.log(error);
+    }
+}
+
+async function updateOrCreate(model: any, where: any, newItem: any) {
+    // First try to find the record
+    const foundItem = await model.findOne({ where });
+    if (!foundItem) {
+        // Item not found, create a new one
+        const item = await model.create(newItem);
+        return { item, created: true };
+    }
+    // Found an item, update it
+    const item = await model.update(newItem, { where });
+    return { item, created: false };
+}
+
+export const createDummyCartItems = async () => {
+    for (let each of cartItems) {
+        await adder(each, db.CartItem);
+        await createOrUpdateCartPrice(each.userId);
+    }
 };
 
 //this creates or finds a cartItem and adds it to the user's cart.
 //params: userId, productId
 //@res:
-export function addCartItem(req: Request, res: Response): void {
-    let { userId, productId } = req.body;
 
-    db.CartItem.findOrCreate({
+export async function addCartItem(req: Request, res: Response): Promise<void> {
+    let { userId, productId } = req.body;
+    await db.CartItem.findOrCreate({
         where: { userId, productId },
     })
         .then((createdItem: object, created: boolean) => {
             if (!created) {
                 res.status(200).send("Can't add item: Item already in cart!");
             } else {
-                //createOrUpdateCartPrice
+                //createOrUpdateCartPrice(userId);
                 res.status(200).send(createdItem);
             }
         })
@@ -47,41 +70,26 @@ export function addCartItem(req: Request, res: Response): void {
 }
 
 //gets all cart items and adds up the total price
-export function createOrUpdateCartPrice(userId: string): Promise<Array<object>> {
-    let totalPrice = 0;
-    var ret = [{}];
+export async function createOrUpdateCartPrice(userId: string): Promise<Array<object>> {
+    return await db.CartItem.findAll({
+        where: {
+            userId: userId,
+        },
+        include: {
+            model: db.Product,
+            attributes: ['price'],
+        },
+        raw: true,
+    })
+        .then(async (response: Array<object>) => {
+            //add up prices and get total price
 
-    return (
-        db.CartItem.findAll({
-            where: {
-                userId: userId,
-            },
-            include: {
-                model: db.Product,
-                attributes: ['price'],
-            },
-            raw: true,
+            const priceArray = response.map((x: any) => x['Product.price']);
+            const totalPrice: number = priceArray.reduce((a, b) => a + b);
+
+            await updateOrCreate(db.Cart, { userId: userId }, { userId: userId, totalPrice: totalPrice }).then();
         })
-            .then((response: Array<object>) => {
-                //add up prices and get total price
-                ret = response;
-                console.log('RESPONSE DENTRO DEL THEN: ', ret);
-                return ret;
-            })
-            //create or update the cart table with total price
-            // .then((dbResponse: Array<object>) => {
-            //     //adds all idividual prices
-            //     // // totalPrice = foundCartItems.reduce((totalSum:number, currentVal:object) => {
-            //     // //     return totalSum+1;
-            //     // // });
-            //     // foundCartItems = dbResponse.dataValues
-            //     // for(var product of foundCartItems){
-            //     //     product
-            //     // }
-            //     ret = dbResponse;
-            // })
-            .catch((err: object) => console.error(err))
-    );
+        .catch((err: object) => console.log(err));
 }
 
 export async function testSumAllPrices(req: Request, res: Response) {
