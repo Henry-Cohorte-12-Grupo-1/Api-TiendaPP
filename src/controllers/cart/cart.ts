@@ -8,9 +8,8 @@ import db from '../../models';
 export const createDummyCartItems = async () => {
     for (let cartItem of cartItems) {
         await db.CartItem.create(cartItem);
+        await updateOrCreateCartPrice(cartItem.userId);
     }
-
-    await updateOrCreateCartPrice('6d2ba377-b219-4925-b6df-4cbc8575ce50');
 };
 //===========================================================
 
