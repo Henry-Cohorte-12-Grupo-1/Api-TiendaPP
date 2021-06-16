@@ -33,6 +33,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
             User.belongsTo(models.Role, { foreignKey: "roleId" });
             User.hasMany(models.Product, { foreignKey: "userId" });
             User.hasOne(models.Cart, { foreignKey: "userId" });
+            User.hasMany(models.Order, { foreignKey: "userId" })
         }
     }
     User.init(
