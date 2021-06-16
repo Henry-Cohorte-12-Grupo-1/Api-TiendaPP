@@ -14,6 +14,7 @@ import updateCategories from "./updateCategories";
 import productDetails from "./productDetails";
 import userProducts from "./userProducts"
 import orders from "./orders";
+import validateEmail from "./validateEmail";
 
 
 const router = Router();
@@ -41,6 +42,8 @@ router.use("/orders", orders)
 
 router.use("/productDetails", productDetails);
 router.use("/userName", userProducts);
+
+router.use("/validate", validateEmail);
 
 //Get a Home de prueba
 router.get("/", (req: Request, res: Response) => {
