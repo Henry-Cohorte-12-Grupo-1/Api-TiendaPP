@@ -2,6 +2,7 @@ import db from '../../models';
 import express, { Request, Response } from 'express';
 import { RSA_NO_PADDING } from 'constants';
 import user from '../../routes/user';
+import {Role} from '../../interfaces/role'
 
 export default async function UserCreate(req: express.Request, res: express.Response) {
     const { firstName, lastName, email, pass, username } = req.body;
@@ -18,7 +19,7 @@ export default async function UserCreate(req: express.Request, res: express.Resp
                 email: email,
                 password: pass,
                 username: username,
-                role:'disabled'
+                role: Role.disabled
             })
 
             // await db.User.addRole(userCreated[0],{roleId:2})
