@@ -13,6 +13,7 @@ import updateCategories from "./updateCategories";
 
 import productDetails from "./productDetails";
 import userProducts from "./userProducts"
+import passportRoutes from "./passportRegister";
 
 
 const router = Router();
@@ -37,6 +38,8 @@ router.use("/product", product);
 
 router.use("/productDetails", productDetails);
 router.use("/userName", userProducts);
+
+router.use("/passportRegister", passportRoutes)
 
 //Get a Home de prueba
 router.get("/", (req: Request, res: Response) => {
