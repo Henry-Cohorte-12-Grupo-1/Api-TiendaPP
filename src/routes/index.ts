@@ -6,7 +6,6 @@ import home from "./home";
 import dummyData from "./dummyData";
 import user from "./user";
 import product from "./product";
-import userCreate from './userCreate';
 import products from "./products";
 import categories from "./categories";
 import updateCategories from "./updateCategories";
@@ -23,8 +22,6 @@ const router = Router();
 
 
 router.use("/home", home);
-
-router.use("/userCreate", userCreate);
 
 router.use("/categories", categories);
 router.use("/updateCategories", updateCategories);

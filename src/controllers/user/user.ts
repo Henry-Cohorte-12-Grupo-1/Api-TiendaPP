@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import app from "../../app";
 import db from "../../models";
 import { users } from "../../seeders/user";
 

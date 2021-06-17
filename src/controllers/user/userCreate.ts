@@ -4,7 +4,7 @@ import {Role} from '../../interfaces/role'
 import {Mailer} from '../mailer/nodeMailer'
 const { v4: uuidv4 } = require('uuid')
 
-export default async function UserCreate(req: express.Request, res: express.Response) {
+export  async function userCreate(req: express.Request, res: express.Response) {
     const { firstName, lastName, email, pass, username } = req.body;
 
     let rUsername = await db.User.findOne({ where: { username: username } })
