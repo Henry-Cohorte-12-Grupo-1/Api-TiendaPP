@@ -24,7 +24,6 @@ async function ordersController(req: express.Request, res: express.Response) {
             },
             include: {
                 model: db.Product,
-                attributes: ['name', 'productId']
             }
 
         })
