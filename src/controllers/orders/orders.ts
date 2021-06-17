@@ -24,10 +24,16 @@ async function ordersController(req: express.Request, res: express.Response) {
             },
             include: {
                 model: db.Product,
+                include: [{
+                    model: db.Image,
+                },
+                {
+                    model: db.User,
+                    attributes: ['username']
+                }]
             }
 
         })
-        console.log(result)
         return res.send(result)
     }
     catch (error: any) {
