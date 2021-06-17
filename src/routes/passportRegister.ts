@@ -51,9 +51,19 @@ passportRoutes.post('/login', async (req: Request, res: Response, next) => {
       if (!user) {
         return res.status(400).json({ msg: "The User does not exists" });
       }
-    
-      if ( await bcrypt.compare(req.body.password, user.password)) {
+      console.log(user.role);
+      if(user.role === 1){
+
+        if ((req.body.password === user.password)) {
+          return res.status(200).json({ accessToken: createTokenAdmin(user) });
+        }
+
+      } else {
+
+        if ( await bcrypt.compare(req.body.password, user.password)) {
           return res.status(200).json({ accessToken: createToken(user) });
+        }
+
       }
       return res.status(400).json({
         msg: "The email or password are incorrect"
@@ -71,6 +81,10 @@ passportRoutes.get('/logout', (req:Request, res:Response) => {
 // para poder leer eso, en el header agregar Header:Authorization, Value: Bearer token (sin las dobles comillas)
 passportRoutes.get('/test', passport.authenticate('jwt', {session:false}), (req, res) => {
     res.send('si lees esto, estas autenticado')
+})
+
+passportRoutes.get('/testAdmin', passport.authenticate('admin', {session:false}), (req, res) => {
+  res.send('si lees esto, estas autenticado como admin')
 })
 
 
