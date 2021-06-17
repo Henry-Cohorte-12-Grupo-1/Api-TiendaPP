@@ -17,7 +17,6 @@ export async function dbProductRequest(
   name = name.toLowerCase();
   try {
     const products = await db.Product.findAndCountAll({
-      //attributes: ["name", "flagImg", "continent", "idName", "area"],
       limit: items,
       offset: items * pags,
       order: [[tag, order]],
