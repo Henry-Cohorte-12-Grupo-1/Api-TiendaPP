@@ -7,6 +7,7 @@ export const users = [
         firstName: "fname",
         lastName: "lname",
         roleId: 1,
+        role:1
     },
     {
         userId: "68f58789-37b2-4a60-838e-93c8eedf7fcc",
@@ -16,6 +17,7 @@ export const users = [
         firstName: "fname",
         lastName: "lname",
         roleId: 2,
+        role:2,
     },
     {
         userId: "9de81b64-1c4a-49d7-b9c5-7554d1d35df2",
@@ -25,5 +27,6 @@ export const users = [
         firstName: "fname",
         lastName: "lname",
         roleId: 2,
+        role:2,
     },
 ];
