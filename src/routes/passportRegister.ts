@@ -8,10 +8,16 @@ import jwt from 'jsonwebtoken';
 
 const passportRoutes = Router();
 
-// pasar el campo de rol para verificar si es admin o no
+// clave_secreta y clave_secreta_admin pasar a .env, si se saben estas claves cagamos fuerte
 
 function createToken(user:any) {
-    return jwt.sign({ username: user.username, email: user.email }, 'Clave_secreta', {
+    return jwt.sign({ username: user.username, email: user.email , user:true}, 'Clave_secreta', {
+      expiresIn: 86400
+    });
+  }
+
+function createTokenAdmin(user:any) {
+    return jwt.sign({ username: user.username, email: user.email , admin:true}, 'Clave_secreta_admin', {
       expiresIn: 86400
     });
   }
@@ -19,7 +25,6 @@ function createToken(user:any) {
 passportRoutes.post('/register', async (req : Request, res:Response) => { 
     if (!req.body.username || !req.body.password || !req.body.email || !req.body.firstName || ! req.body.lastName) return res.send('no se mandaron los parametros'); 
 
-    // verificar si ya existe el usuario
     const userExist = await db.User.findOne({where: {username: req.body.username}})
     if (userExist) return res.send('El usuario ya existe');
 
@@ -41,6 +46,7 @@ passportRoutes.post('/login', async (req: Request, res: Response, next) => {
           .json({ msg: "Please. Send your email and password" });
       }
     
+      // verificar si el usuario tiene el rol de admin y generarle un token de administrador
       const user = await db.User.findOne({where:{ email: req.body.email }});
       if (!user) {
         return res.status(400).json({ msg: "The User does not exists" });
@@ -66,5 +72,7 @@ passportRoutes.get('/logout', (req:Request, res:Response) => {
 passportRoutes.get('/test', passport.authenticate('jwt', {session:false}), (req, res) => {
     res.send('si lees esto, estas autenticado')
 })
+
+
 
 export default passportRoutes;
