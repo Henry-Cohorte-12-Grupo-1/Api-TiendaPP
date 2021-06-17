@@ -7,14 +7,16 @@ async function searchController(req: express.Request, res: express.Response) {
   const PAG: any = req.query.pag || "0";
   const TAG: any = req.query.tag || "name";
   const ORDER: any = req.query.order || "ASC";
+  //Filter
+  const USERNAME: any = req.query.username || ""
   //Autocomplete
-  const NAME: any = req.query.name;
+  const NAME: any = req.query.name || "";
   //
   if (Object.keys(req.query).length !== 0) {
     // Checkea si hay query o no.
     if (NAME || ITEMS || PAG || TAG || ORDER) {
       //Checkea si hay nombre de producto.
-      const products = await dbProductRequest(ITEMS, PAG, TAG, ORDER, NAME);
+      const products = await dbProductRequest(ITEMS, PAG, TAG, ORDER, NAME, USERNAME);
       //Creo array de promesas
       const productsArray=products.rows; 
       //agrego imágenes
