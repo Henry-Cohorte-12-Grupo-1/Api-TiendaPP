@@ -6,14 +6,19 @@ import home from "./home";
 import dummyData from "./dummyData";
 import user from "./user";
 import product from "./product";
-
+import userCreate from './userCreate';
 import products from "./products";
 import categories from "./categories";
 import updateCategories from "./updateCategories";
 
 import productDetails from "./productDetails";
 import userProducts from "./userProducts"
+
 import passportRoutes from "./passportRegister";
+
+import orders from "./orders";
+import validateEmail from "./validateEmail";
+
 
 
 const router = Router();
@@ -22,6 +27,8 @@ const router = Router();
 
 
 router.use("/home", home);
+
+router.use("/userCreate", userCreate);
 
 router.use("/categories", categories);
 router.use("/updateCategories", updateCategories);
@@ -35,11 +42,16 @@ router.use("/search", search);
 router.use("/dummyData", dummyData);
 router.use("/user", user);
 router.use("/product", product);
+router.use("/orders", orders)
 
 router.use("/productDetails", productDetails);
 router.use("/userName", userProducts);
 
+
 router.use("/passportRegister", passportRoutes)
+
+router.use("/validate", validateEmail);
+
 
 //Get a Home de prueba
 router.get("/", (req: Request, res: Response) => {

@@ -12,6 +12,8 @@ interface UserAttributes {
     email: string;
     firstName: string;
     lastName: string;
+    role: number;
+    code:string
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -27,12 +29,15 @@ module.exports = (sequelize: any, DataTypes: any) => {
         email!: string;
         firstName!: string;
         lastName!: string;
+        role!:number;
+        code!:string
 
         static associate(models: any) {
             // define association here
             User.belongsTo(models.Role, { foreignKey: "roleId" });
             User.hasMany(models.Product, { foreignKey: "userId" });
             User.hasOne(models.Cart, { foreignKey: "userId" });
+            User.hasMany(models.Order, { foreignKey: "userId" })
         }
     }
     User.init(
@@ -64,6 +69,14 @@ module.exports = (sequelize: any, DataTypes: any) => {
             lastName: {
                 type: DataTypes.STRING,
                 allowNull: false,
+            },
+            role: {
+                type: DataTypes.INTEGER,
+                allowNull: true,
+            },
+            code: {
+                type: DataTypes.STRING,
+                allowNull: true,
             },
         },
         {
