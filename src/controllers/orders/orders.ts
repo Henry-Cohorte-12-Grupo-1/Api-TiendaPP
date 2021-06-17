@@ -7,15 +7,23 @@ import { orders } from '../../seeders/order';
 
 async function ordersController(req: express.Request, res: express.Response) {
     //busca un producto por id
-    const id: string = req.params.userId;
+    const username: string = req.params.userName;
     try {
+
+        const matchUser = await db.User.findOne({
+            where: {
+                username: username
+            }
+        })
+
+        const id = matchUser.userId
+
         const result = await db.Order.findAll({
             where: {
                 userId: id
             },
             include: {
                 model: db.Product,
-                attributes: ['name', 'productId']
             }
 
         })
