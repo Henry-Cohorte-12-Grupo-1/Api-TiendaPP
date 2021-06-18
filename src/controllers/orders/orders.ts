@@ -30,6 +30,9 @@ async function ordersController(req: express.Request, res: express.Response) {
                 {
                     model: db.User,
                     attributes: ['username']
+                },
+                {
+                    model: db.Review
                 }]
             }
 

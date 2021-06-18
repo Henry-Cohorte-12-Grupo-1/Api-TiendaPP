@@ -58,12 +58,12 @@ export const reviews = [
         review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
 
-    {
-        userId: "6d2ba377-b219-4925-b6df-4cbc8575ce50",
-        productId: "3d56de88-5f25-433f-9c3c-1dfa30cce15a",
-        score: 3,
-        review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    },
+    // {
+    //     userId: "6d2ba377-b219-4925-b6df-4cbc8575ce50",
+    //     productId: "3d56de88-5f25-433f-9c3c-1dfa30cce15a",
+    //     score: 3,
+    //     review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    // },
 
 
 
