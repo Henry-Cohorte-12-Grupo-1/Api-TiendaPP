@@ -20,6 +20,9 @@ export async function addCartItem(req: Request, res: Response): Promise<void> {
     let { userId, productId } = req.body;
     await db.CartItem.findOrCreate({
         where: { userId, productId },
+        defaults: {
+            quantity: 1,
+        },
     })
         .then(async (createdItem: object, created: boolean) => {
             if (!created) {
