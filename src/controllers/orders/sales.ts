@@ -5,7 +5,7 @@ import { orders } from '../../seeders/order';
 
 //export function
 
-async function ordersController(req: express.Request, res: express.Response) {
+async function salesController(req: express.Request, res: express.Response) {
     //busca un producto por id
     const username: string = req.params.userName;
     try {
@@ -16,28 +16,34 @@ async function ordersController(req: express.Request, res: express.Response) {
             }
         })
 
-        const id = matchUser.userId
+        const sellerId = matchUser.userId
 
         const result = await db.Order.findAll({
-            where: {
-                userId: id
-            },
-            include: {
-                model: db.Product,
-                include: [{
-                    model: db.Image,
-                },
+
+            include: [
                 {
                     model: db.User,
-                    attributes: ['username']
+                    attributes: ["username"]
                 },
                 {
-                    model: db.Review
+                    model: db.Product,
+                    where: {
+                        userId: sellerId
+                    },
+                    include: [{
+                        model: db.Image,
+                    },
+                    {
+                        model: db.User,
+                        attributes: ['username']
+                    },
+                    {
+                        model: db.Review
+                    }]
                 }]
-            }
 
         })
-        return res.send(result)
+        res.send(result)
     }
     catch (error: any) {
         return res.send(error.message)
@@ -51,4 +57,4 @@ export const createDummyOrders = () => {
 };
 
 
-export default ordersController;
+export default salesController;

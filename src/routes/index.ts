@@ -10,6 +10,7 @@ import product from "./product";
 import products from "./products";
 import categories from "./categories";
 import updateCategories from "./updateCategories";
+import reviews from "./reviews"
 
 import productDetails from "./productDetails";
 import userProducts from "./userProducts"
@@ -39,6 +40,7 @@ router.use("/dummyData", dummyData);
 router.use("/user", user);
 router.use("/product", product);
 router.use("/orders", orders)
+router.use("/reviews", reviews)
 
 router.use("/productDetails", productDetails);
 router.use("/userName", userProducts);

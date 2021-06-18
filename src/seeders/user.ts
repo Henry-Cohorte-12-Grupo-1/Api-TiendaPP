@@ -29,4 +29,13 @@ export const users = [
         roleId: 2,
         role:3,
     },
+    {
+        userId: "029c1d76-306f-4bf9-bb9c-32cd24533a59",
+        username: "superpedro92",
+        password: "pass",
+        email: "useremai223",
+        firstName: "fname",
+        lastName: "lname",
+        roleId: 2,
+    },
 ];
