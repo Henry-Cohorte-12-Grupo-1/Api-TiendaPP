@@ -3,6 +3,7 @@ import { Router, Request, Response, NextFunction } from "express";
 import search from "./search";
 import home from "./home";
 import login from "./login";
+import verification from '.'
 
 import dummyData from "./dummyData";
 import user from "./user";

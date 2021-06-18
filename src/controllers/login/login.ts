@@ -1,11 +1,12 @@
 import express, { Request, Response} from 'express'; 
 import db from '../../models';
-import crypto from 'crypto';
 
 import { IEmail } from '../../interfaces/mailer';
 import {Mailer} from '../mailer/nodeMailer'
 import jwt from 'jsonwebtoken';
 import config from '../../lib/config';
+
+
 
 function createToken(user:any) {
     return jwt.sign({ id: user.userId,username: user.username, email: user.email, user:true}, config.JWT_SECRET, {
@@ -13,15 +14,18 @@ function createToken(user:any) {
     });
 }
 
-function createTokenAdmin(user:any) {
-    return jwt.sign({ id: user.userId,username: user.username, email: user.email, admin:true}, config.JWT_SECRET_ADMIN, {
-      expiresIn: 86400
-    });
+function createTokenVerification(user: any, key:number) {
+    return jwt.sign({ id: user.userId,username: user.username, email: user.email, key:key}, 'key', {
+        expiresIn: 86400
+      });
 }
 
 
 const login = async (req: express.Request, res: express.Response) => {
+    const key = Math.floor(100000 + Math.random() * 900000);
+    
     const { email, pass }= req.body;
+
     console.log(`email: ${email} pass: ${pass}`)
 
     const resp = await db.User.findOne({ where: {email: email}})
@@ -29,7 +33,7 @@ const login = async (req: express.Request, res: express.Response) => {
     console.log(resp);
     console.log('--------------------------------')
 
-    const key = Math.floor(100000 + Math.random() * 900000);
+
 
 
     let mailFormat:IEmail = {      
@@ -50,7 +54,7 @@ const login = async (req: express.Request, res: express.Response) => {
                 answer = {
                     message: 'Admin',
                     key: key,
-                    token: createTokenAdmin(resp)
+                    token: createTokenVerification(resp,key)
                 }
                 break;
             case 2:
