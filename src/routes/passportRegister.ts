@@ -5,19 +5,20 @@ import db from '../models';
 import bcrypt from 'bcryptjs';
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
+import config from '../lib/config';
 
 const passportRoutes = Router();
 
 // clave_secreta y clave_secreta_admin pasar a .env, si se saben estas claves cagamos fuerte
 
 function createToken(user:any) {
-    return jwt.sign({ id: user.userId,username: user.username, email: user.email , user:true}, 'Clave_secreta', {
+    return jwt.sign({ id: user.userId,username: user.username, email: user.email , user:true}, config.JWT_SECRET  , {
       expiresIn: 86400
     });
   }
 
 function createTokenAdmin(user:any) {
-    return jwt.sign({ id: user.userId,username: user.username, email: user.email , admin:true}, 'Clave_secreta_admin', {
+    return jwt.sign({ id: user.userId,username: user.username, email: user.email , admin:true}, config.JWT_SECRET_ADMIN, {
       expiresIn: 86400
     });
   }
