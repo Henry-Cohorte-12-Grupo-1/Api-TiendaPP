@@ -3,18 +3,19 @@ import passport from "passport";
 import passportJWT from "passport-jwt";
 import passportHttpBearer from "passport-http-bearer";
 import db from './models';
+import config from './lib/config';
 
 const BearerStrategy = passportHttpBearer.Strategy;
 const JWTStrategy = passportJWT.Strategy
 
 const opts: passportJWT.StrategyOptions = {
     jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'Clave_secreta'
+    secretOrKey: config.JWT_SECRET
   };
 
 const optsAdmin: passportJWT.StrategyOptions = {
     jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'Clave_secreta_admin'
+    secretOrKey: config.JWT_SECRET_ADMIN
   };
   
 passport.use(new JWTStrategy(opts, async (payload, done) => {
