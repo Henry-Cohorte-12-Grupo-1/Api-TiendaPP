@@ -1,6 +1,9 @@
 import express, { Request, Response} from 'express'; 
 import db from '../../models';
 import crypto from 'crypto';
+
+import { IEmail } from '../../interfaces/mailer';
+import {Mailer} from '../mailer/nodeMailer'
 import jwt from 'jsonwebtoken';
 import config from '../../lib/config';
 
@@ -16,6 +19,7 @@ function createTokenAdmin(user:any) {
     });
 }
 
+
 const login = async (req: express.Request, res: express.Response) => {
     const { email, pass }= req.body;
     console.log(`email: ${email} pass: ${pass}`)
@@ -25,12 +29,24 @@ const login = async (req: express.Request, res: express.Response) => {
     console.log(resp);
     console.log('--------------------------------')
 
-    const key = crypto.randomBytes(4).toString('hex');
+    const key = Math.floor(100000 + Math.random() * 900000);
+
+
+    let mailFormat:IEmail = {      
+            from: '"TiendApp" <tomygaar@gmail.com>', // sender address
+            to: `${email}, tomasqgarcia@gmail.com`, // list of receivers
+            subject: "Two-Steps Validation", // Subject line
+            text: "Two-Steps Validation", // plain text body
+            html: `<b>Welcome ${email}!</b>
+            <p>Please use the following code to complete your two steps validation on TiendApp page:</p>
+            <p>Your 6 digits key: ${key}<p>`, // html body
+    }
 
     if(resp && resp.password === pass){
         let answer = {}
         switch(resp.role){
             case 1:
+                Mailer(mailFormat)
                 answer = {
                     message: 'Admin',
                     key: key,
