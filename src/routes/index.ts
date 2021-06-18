@@ -18,6 +18,8 @@ import passportRoutes from "./passportRegister";
 import orders from "./orders";
 import validateEmail from "./validateEmail";
 
+import passGoogleOARoutes from "./auth";
+
 
 
 const router = Router();
@@ -46,6 +48,8 @@ router.use("/userName", userProducts);
 
 
 router.use("/passportRegister", passportRoutes)
+
+router.use("/auth", passGoogleOARoutes)
 
 router.use("/validate", validateEmail);
 

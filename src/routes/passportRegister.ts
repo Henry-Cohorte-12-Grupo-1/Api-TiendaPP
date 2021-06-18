@@ -89,5 +89,4 @@ passportRoutes.get('/testAdmin', passport.authenticate('admin', {session:false})
 })
 
 
-
 export default passportRoutes;

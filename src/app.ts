@@ -8,6 +8,8 @@ import passport from 'passport';
 
 import routes from './routes/index'
 
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
 require('./passport')
 
 const app: Application = express()
@@ -30,6 +32,16 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.serializeUser((user: any, done: any) => {
+	return done(null, user);
+  });
+  
+passport.deserializeUser((user: any, done: any) => {
+	return done(null, user);
+  });
+
+
 
 app.use('/api', routes);
 
