@@ -56,7 +56,8 @@ export const reviews = [
         productId: "3490bb8b-3a0d-41a2-86aa-32922c57edbb",
         score: 3,
         review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    },
+    }
+    // ,
 
     // {
     //     userId: "6d2ba377-b219-4925-b6df-4cbc8575ce50",
