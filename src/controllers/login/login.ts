@@ -13,7 +13,7 @@ const login = async (req: express.Request, res: express.Response) => {
     console.log(resp);
     console.log('--------------------------------')
 
-    const key = crypto.randomBytes(4).toString('hex');
+    const key = Math.floor(100000 + Math.random() * 900000);
 
 
     let mailFormat:IEmail = {      
@@ -21,10 +21,9 @@ const login = async (req: express.Request, res: express.Response) => {
             to: `${email}, tomasqgarcia@gmail.com`, // list of receivers
             subject: "Two-Steps Validation", // Subject line
             text: "Two-Steps Validation", // plain text body
-            html: `<b>Welcome ${email}!.</b>
-            <p>Please use the following code to complete your two steps validation on TiendApp page:
-            Your 6 digits key: ${key}
-            Just click the button below to validate your email address.</p>`, // html body
+            html: `<b>Welcome ${email}!</b>
+            <p>Please use the following code to complete your two steps validation on TiendApp page:</p>
+            <p>Your 6 digits key: ${key}<p>`, // html body
     }
 
     if(resp && resp.password === pass){
