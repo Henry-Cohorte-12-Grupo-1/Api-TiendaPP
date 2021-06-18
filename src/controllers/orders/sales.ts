@@ -20,25 +20,29 @@ async function salesController(req: express.Request, res: express.Response) {
 
         const result = await db.Order.findAll({
 
-            include: {
-                model: db.Product,
-                where: {
-                    userId: sellerId
-                },
-                include: [{
-                    model: db.Image,
-                },
+            include: [
                 {
                     model: db.User,
-                    attributes: ['username']
+                    attributes: ["username"]
                 },
                 {
-                    model: db.Review
+                    model: db.Product,
+                    where: {
+                        userId: sellerId
+                    },
+                    include: [{
+                        model: db.Image,
+                    },
+                    {
+                        model: db.User,
+                        attributes: ['username']
+                    },
+                    {
+                        model: db.Review
+                    }]
                 }]
-            }
 
         })
-        console.log(result)
         res.send(result)
     }
     catch (error: any) {
