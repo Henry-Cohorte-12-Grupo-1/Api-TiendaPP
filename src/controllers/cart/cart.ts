@@ -77,6 +77,7 @@ export function getCart(req: Request, res: Response) {
         where: { userId },
         include: {
             model: db.Product,
+            include: db.Image,
         },
     })
         .then((cartItems: Array<object>) => {
