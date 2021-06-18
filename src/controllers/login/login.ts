@@ -1,6 +1,20 @@
 import express, { Request, Response} from 'express'; 
 import db from '../../models';
 import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
+import config from '../../lib/config';
+
+function createToken(user:any) {
+    return jwt.sign({ id: user.userId,username: user.username, email: user.email, user:true}, config.JWT_SECRET, {
+      expiresIn: 86400
+    });
+}
+
+function createTokenAdmin(user:any) {
+    return jwt.sign({ id: user.userId,username: user.username, email: user.email, admin:true}, config.JWT_SECRET_ADMIN, {
+      expiresIn: 86400
+    });
+}
 
 const login = async (req: express.Request, res: express.Response) => {
     const { email, pass }= req.body;
@@ -19,12 +33,14 @@ const login = async (req: express.Request, res: express.Response) => {
             case 1:
                 answer = {
                     message: 'Admin',
-                    key: key
+                    key: key,
+                    token: createTokenAdmin(resp)
                 }
                 break;
             case 2:
                 answer = {
                     message: 'User',
+                    token: createToken(resp)
                 }
                 break;
             case 3:
