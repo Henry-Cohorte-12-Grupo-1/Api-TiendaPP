@@ -27,6 +27,6 @@ export const users = [
         firstName: "fname",
         lastName: "lname",
         roleId: 2,
-        role:2,
+        role:3,
     },
 ];

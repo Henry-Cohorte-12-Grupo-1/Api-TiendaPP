@@ -2,6 +2,7 @@
 import { Router, Request, Response, NextFunction } from "express";
 import search from "./search";
 import home from "./home";
+import login from "./login";
 
 import dummyData from "./dummyData";
 import user from "./user";
@@ -26,14 +27,12 @@ const router = Router();
 
 
 router.use("/home", home);
+router.use("/login", login);
 
 router.use("/categories", categories);
 router.use("/updateCategories", updateCategories);
 
 router.use("/products", products);
-
-router.use("/home", home);
-
 
 router.use("/search", search);
 router.use("/dummyData", dummyData);
