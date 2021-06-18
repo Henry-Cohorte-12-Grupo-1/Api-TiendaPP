@@ -7,7 +7,7 @@ async function searchController(req: express.Request, res: express.Response) {
   const PAG: any = req.query.pag || "0";
   const TAG: any = req.query.tag || "name";
   const ORDER: any = req.query.order || "ASC";
-  //Filter
+  //Filter por vendedor
   const USERNAME: any = req.query.username || ""
   //Autocomplete
   const NAME: any = req.query.name || "";

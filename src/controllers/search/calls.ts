@@ -1,8 +1,6 @@
 import db from "../../models";
 import { Sequelize } from "sequelize";
 
-//import { products } from "../../seeders/product";
-
 //const { Op } = require("sequelize");
 
 export async function dbProductRequest(
