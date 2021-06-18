@@ -17,6 +17,11 @@ const optsAdmin: passportJWT.StrategyOptions = {
     jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: config.JWT_SECRET_ADMIN
   };
+
+const optsVerification: passportJWT.StrategyOptions = {
+    jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: 'key'
+};
   
 passport.use(new JWTStrategy(opts, async (payload, done) => {
     try {
@@ -41,6 +46,18 @@ passport.use('admin',new JWTStrategy(optsAdmin, async (payload, done) => {
     } catch (error) {
       console.log(error);
     }
+}));
+
+passport.use('verificationKey',new JWTStrategy(optsVerification, async (payload, done) => {
+  try {
+    const user = await db.User.findOne({where:{username:payload.username}});
+    if (user) {
+      return done(null, user);
+    }
+    return done(null, false);
+  } catch (error) {
+    console.log(error);
+  }
 }));
 
 export default passport;
