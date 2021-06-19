@@ -16,7 +16,7 @@ export async function dbProductRequest(
   let userId: string = "";
   name = name.toLowerCase();
   try {
-    if (username !== "") {
+    if (username && username !== "") {
       const userSearch = await db.User.findOne({
         where: {
           username: username,
