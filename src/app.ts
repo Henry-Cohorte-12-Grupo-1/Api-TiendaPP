@@ -40,9 +40,9 @@ app.use(passport.session());
 	// milliseconds of a day
 	maxAge: 24*60*60*1000,
 	keys:[GOAuthKeys.session.cookieKey]
-  }));*/
-/*
-app.use(session({ secret: 'xxxx' }));
+  }));
+
+//app.use(session({ secret: 'xxxx' }));
 app.use(passport.initialize());         // Used to initialize passport
 app.use(passport.session());            // Used to persist login sessions*/
 
@@ -56,10 +56,6 @@ app.use(
 		allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
 	})
 );
-
-
-//app.use(passport.initialize());
-//app.use(passport.session());
 
 
 app.use('/api', routes);
