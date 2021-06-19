@@ -1,15 +1,12 @@
-"use strict";
-import { Model } from "sequelize";
+'use strict';
+import { Model } from 'sequelize';
 
 interface CartItemAttributes {
     quantity: number;
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
-    class CartItem
-        extends Model<CartItemAttributes>
-        implements CartItemAttributes
-    {
+    class CartItem extends Model<CartItemAttributes> implements CartItemAttributes {
         quantity!: number;
 
         /**
@@ -19,8 +16,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
          */
         static associate(models: any) {
             // define association here
-            CartItem.belongsTo(models.Cart, { foreignKey: "cartId" });
-            CartItem.belongsTo(models.Product, { foreignKey: "productId" });
+            CartItem.belongsTo(models.User, { foreignKey: 'userId' });
+            CartItem.belongsTo(models.Product, { foreignKey: 'productId' });
         }
     }
     CartItem.init(
@@ -32,8 +29,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
         },
         {
             sequelize,
-            modelName: "CartItem",
-        }
+            modelName: 'CartItem',
+        },
     );
     return CartItem;
 };

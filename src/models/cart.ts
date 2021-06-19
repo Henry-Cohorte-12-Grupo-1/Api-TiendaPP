@@ -1,9 +1,8 @@
-"use strict";
+'use strict';
 
-import { Model } from "sequelize";
+import { Model } from 'sequelize';
 
 interface CartAttributes {
-    cartId: number;
     totalPrice: number;
 }
 
@@ -14,24 +13,16 @@ module.exports = (sequelize: any, DataTypes: any) => {
          * This method is not a part of Sequelize lifecycle.
          * The `models/index` file will call this method automatically.
          */
-        cartId!: number;
         totalPrice!: number;
 
         static associate(models: any) {
             // define association here
-            Cart.belongsTo(models.User, { foreignKey: "userId" });
-            Cart.hasMany(models.CartItem, { foreignKey: "cartId" });
+            Cart.belongsTo(models.User, { foreignKey: 'userId' });
         }
     }
 
     Cart.init(
         {
-            cartId: {
-                primaryKey: true,
-                type: DataTypes.INTEGER,
-                allowNull: false,
-                autoIncrement: true,
-            },
             totalPrice: {
                 type: DataTypes.FLOAT,
                 allowNull: false,
@@ -39,8 +30,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
         },
         {
             sequelize,
-            modelName: "Cart",
-        }
+            modelName: 'Cart',
+        },
     );
     return Cart;
 };

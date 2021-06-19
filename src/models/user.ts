@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-import { Model, UUIDV4 } from "sequelize";
+import { Model, UUIDV4 } from 'sequelize';
 
 // import {Role}  from './roles'
 
@@ -34,10 +34,12 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
         static associate(models: any) {
             // define association here
-            User.belongsTo(models.Role, { foreignKey: "roleId" });
-            User.hasMany(models.Product, { foreignKey: "userId" });
-            User.hasOne(models.Cart, { foreignKey: "userId" });
-            User.hasMany(models.Order, { foreignKey: "userId" })
+
+            User.belongsTo(models.Role, { foreignKey: 'roleId' });
+            User.hasMany(models.Product, { foreignKey: 'userId' });
+            User.hasOne(models.Cart, { foreignKey: 'userId' });
+            User.hasMany(models.CartItem, { foreignKey: 'userId' });
+
         }
     }
     User.init(
@@ -81,8 +83,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
         },
         {
             sequelize,
-            modelName: "User",
-        }
+            modelName: 'User',
+        },
     );
     return User;
 };
