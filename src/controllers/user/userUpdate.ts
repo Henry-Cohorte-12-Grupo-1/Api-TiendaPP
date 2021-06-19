@@ -2,10 +2,10 @@ import express, { Request, Response } from "express";
 import db from "../../models";
 
 const userUpdate = async (req: express.Request, res: express.Response) => {
-    const { role, userId, username } = req.body;
-    console.log(userId)
+    const { role, userId, username, passReset } = req.body;
+    console.log(userId,passReset)
 
-    let user = await db.User.update({ roleId: role }, {
+    let user = await db.User.update({ roleId: role,forcePassword:passReset }, {
         where: { username: username },
     })
 
