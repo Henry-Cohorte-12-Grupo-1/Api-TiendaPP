@@ -14,8 +14,6 @@ passGoogleOARoutes.get('/google',
 passGoogleOARoutes.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req: Request, res: Response) {
-    //res.redirect('http://localhost:3000');
-    //console.log('DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD', req);
     res.send(req.user)}
   );
 

@@ -27,24 +27,14 @@ app.use(express.json({limit: '50mb'}));
 app.use(cookieParser());
 app.use(morgan('dev'));
 
-const session = require("express-session"),
-    bodyParser = require("body-parser");
-
-app.use(express.static("public"));
-app.use(session({ secret: "cats" }));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(passport.initialize());
-app.use(passport.session());
-
-/*app.use(cookieSession({
+app.use(cookieSession({
 	// milliseconds of a day
 	maxAge: 24*60*60*1000,
 	keys:[GOAuthKeys.session.cookieKey]
   }));
 
-//app.use(session({ secret: 'xxxx' }));
 app.use(passport.initialize());         // Used to initialize passport
-app.use(passport.session());            // Used to persist login sessions*/
+app.use(passport.session());            // Used to persist login sessions
 
 
 
