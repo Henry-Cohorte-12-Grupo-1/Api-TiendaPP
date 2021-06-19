@@ -3,8 +3,12 @@ import cookieParser from 'cookie-parser';
 import config from './lib/config'
 import morgan from 'morgan';
 import cors from 'cors';
+import session from 'express-session';
+import passport from 'passport';
 
 import routes from './routes/index'
+
+require('./passport')
 
 const app: Application = express()
 app.use(express.json())
@@ -23,6 +27,9 @@ app.use(
 		allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
 	})
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/api', routes);
 

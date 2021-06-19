@@ -4,6 +4,7 @@ import { Model } from 'sequelize'
 interface ReviewAttributes {
     score: number;
     review: string;
+    userId: string
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -14,7 +15,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
          * The `models/index` file will call this method automatically.
          */
         score!: number;
-        review!: string
+        review!: string;
+        userId!: string
 
         static associate(models: any) {
             // define association here
@@ -24,7 +26,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
     Review.init(
         {
             score: DataTypes.INTEGER,
-            review: DataTypes.STRING
+            review: DataTypes.TEXT,
+            userId: DataTypes.UUID
         },
         {
             sequelize,

@@ -12,6 +12,8 @@ const config = {
     port: process.env.API_PORT || "3001",
     host: process.env.API_host || "localhost",
     cors: process.env.CORS || "localhost:3000",
+    JWT_SECRET: process.env.JWT_SECRET || "Clave_User",
+    JWT_SECRET_ADMIN: process.env.JWT_SECRET_ADMIN || "Clave_Admin"
 };
 
 export default config;
