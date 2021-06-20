@@ -39,12 +39,12 @@ export const orders = [
         productId: "cce405a8-873b-4ceb-a9b1-8fd6f4baf250",
         userId: "68f58789-37b2-4a60-838e-93c8eedf7fcc",
         quantity: 1,
-        status: "dispatched"
+        status: "cancelled"
     },
     {
         productId: "3d56de88-5f25-433f-9c3c-1dfa30cce15a",
         userId: "68f58789-37b2-4a60-838e-93c8eedf7fcc",
         quantity: 1,
-        status: "dispatched"
+        status: "cancelled"
     },
 ]
