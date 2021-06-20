@@ -79,7 +79,7 @@ passport.use(new GoogleStrategy({
       return done(null, user.dataValues)
     } else {
       const createUser = await db.User.create({
-        username: profile.id,
+        username: profile.name.givenName,
         password: profile.id,
         email: profile.emails[0].value,
         firstName: profile.name.givenName,
