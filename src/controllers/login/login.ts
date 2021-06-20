@@ -46,9 +46,7 @@ const login = async (req: express.Request, res: express.Response) => {
             <p>Your 6 digits key: ${key}<p>`, // html body
     }
 
-    if (resp.forcePassword) {
-        res.send({message:'password reset'})
-    } else {
+
         if (resp && resp.password === pass) {
             let answer = {}
             switch (resp.role) {
@@ -63,7 +61,8 @@ const login = async (req: express.Request, res: express.Response) => {
                 case 2:
                     answer = {
                         message: 'User',
-                        token: createToken(resp)
+                        token: createToken(resp),
+                        reset: true
                     }
                     break;
                 case 3:
@@ -76,6 +75,6 @@ const login = async (req: express.Request, res: express.Response) => {
         }
         res.send({ message: 'User or password are incorrect' });
     }
-}
+
 
 export default login;
