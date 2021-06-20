@@ -2,14 +2,17 @@ import express from "express"
 import db from "../../models";
 
 export const passReset = async (req: express.Request, res: express.Response) => {
-    const {pass, userId} = req.body
-    console.log(pass,userId)
+    const { pass, userId } = req.body
+    console.log(pass, userId)
 
-    let user = await db.User.update({ password:pass}, {
-        where: { userId:userId },
+    let user = await db.User.update({
+        password: pass,
+        forcePassword: false
+    }, {
+        where: { userId: userId },
     })
 
-    if(user){
+    if (user) {
         res.send('succesfully updated')
     } else {
         res.send('error')
