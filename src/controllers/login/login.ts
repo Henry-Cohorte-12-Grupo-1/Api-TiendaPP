@@ -21,7 +21,7 @@ function createTokenVerification(user: any, key:number) {
 }
 
 export function addCartItem(userId: string, productId: string, quantity: number){
-    db.CartItem.create({userId, productId, quantity})
+    db.CartItem.findOrCreate({where: {userId, productId}, defaults:{quantity: quantity}})
 }
 
 const login = async (req: express.Request, res: express.Response) => {
