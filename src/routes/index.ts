@@ -18,7 +18,7 @@ import productDetails from "./productDetails";
 import userProducts from "./userProducts";
 
 import passportRoutes from "./passportRegister";
-import passGoogleOARoutes from "./auth";
+import passOARoutes from "./auth";
 
 import orders from "./orders";
 import validateEmail from "./validateEmail";
@@ -51,7 +51,7 @@ router.use("/reviews", reviews);
 router.use('/cart', cart);
 
 router.use("/passportRegister", passportRoutes);
-router.use("/auth", passGoogleOARoutes)
+router.use("/auth", passOARoutes)
 
 router.use("/validate", validateEmail);
 
