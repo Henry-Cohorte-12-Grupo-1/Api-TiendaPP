@@ -13,7 +13,8 @@ interface UserAttributes {
     firstName: string;
     lastName: string;
     role: number;
-    code:string
+    code:string;
+    forcePassword:boolean
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -30,7 +31,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
         firstName!: string;
         lastName!: string;
         role!:number;
-        code!:string
+        code!:string;
+        forcePassword!:boolean
 
         static associate(models: any) {
             // define association here
@@ -79,6 +81,11 @@ module.exports = (sequelize: any, DataTypes: any) => {
             code: {
                 type: DataTypes.STRING,
                 allowNull: true,
+            },
+            forcePassword: {
+                type: DataTypes.BOOLEAN,
+                defaultValue:false,
+                allowNull: false,
             },
         },
         {

@@ -1,4 +1,5 @@
 import { IEmail } from "../../interfaces/mailer";
+import { EMAIL_KEY,EMAIL_USER } from "./config";
 
 const nodemailer = require("nodemailer");
 
@@ -14,8 +15,8 @@ export async function Mailer(emailObject:IEmail) {
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: 'tomygaar@gmail.com', // generated ethereal user
-      pass: 'wymbiiijxwypnlbp', // generated ethereal password
+      user: EMAIL_USER, // generated ethereal user
+      pass: EMAIL_KEY, // generated ethereal password
     },
   });
 
