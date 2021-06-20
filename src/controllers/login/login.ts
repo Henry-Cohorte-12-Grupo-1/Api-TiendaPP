@@ -24,7 +24,7 @@ function createTokenVerification(user: any, key:number) {
 const login = async (req: express.Request, res: express.Response) => {
     const key = Math.floor(100000 + Math.random() * 900000);
     
-    const { email, pass }= req.body;
+    const { email, pass, cart }= req.body;
 
     console.log(`email: ${email} pass: ${pass}`)
 
@@ -32,8 +32,15 @@ const login = async (req: express.Request, res: express.Response) => {
     console.log('--------------------------------')
     console.log(resp);
     console.log('--------------------------------')
+    
+    
 
-
+   function addCartItem(userId: string, productId: string, quantity: number){
+       db.CartItem.create({userId, productId, quantity})
+   }
+    // de guestCart a userCart
+    cart.forEach((cartItem:any) => addCartItem(resp.userId,cartItem.productId, cartItem.quantity))
+   
 
 
     let mailFormat:IEmail = {      
