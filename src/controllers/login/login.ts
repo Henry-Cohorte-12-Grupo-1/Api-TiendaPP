@@ -47,34 +47,34 @@ const login = async (req: express.Request, res: express.Response) => {
     }
 
 
-        if (resp && resp.password === pass) {
-            let answer = {}
-            switch (resp.role) {
-                case 1:
-                    Mailer(mailFormat)
-                    answer = {
-                        message: 'Admin',
-                        key: key,
-                        token: createTokenVerification(resp, key)
-                    }
-                    break;
-                case 2:
-                    answer = {
-                        message: 'User',
-                        token: createToken(resp),
-                        reset: true
-                    }
-                    break;
-                case 3:
-                    answer = {
-                        message: 'Disabled'
-                    }
-                    break;
-            }
-            res.send(answer)
+    if (resp && resp.password === pass) {
+        let answer = {}
+        switch (resp.role) {
+            case 1:
+                Mailer(mailFormat)
+                answer = {
+                    message: 'Admin',
+                    key: key,
+                    token: createTokenVerification(resp, key)
+                }
+                break;
+            case 2:
+                answer = {
+                    message: 'User',
+                    token: createToken(resp),
+                    reset: resp.forcePassword
+                }
+                break;
+            case 3:
+                answer = {
+                    message: 'Disabled'
+                }
+                break;
         }
-        res.send({ message: 'User or password are incorrect' });
+        return res.send(answer)
     }
+    return res.send({ message: 'User or password are incorrect' });
+}
 
 
 export default login;

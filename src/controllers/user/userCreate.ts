@@ -1,18 +1,18 @@
 import db from '../../models';
 import express, { Request, Response } from 'express';
-import {Role} from '../../interfaces/role'
-import {Mailer} from '../mailer/nodeMailer'
+import { Role } from '../../interfaces/role'
+import { Mailer } from '../mailer/nodeMailer'
 import { IEmail } from '../../interfaces/mailer';
 const { v4: uuidv4 } = require('uuid')
 
-export  async function userCreate(req: express.Request, res: express.Response) {
+export async function userCreate(req: express.Request, res: express.Response) {
     const { firstName, lastName, email, pass, username } = req.body;
 
     let rUsername = await db.User.findOne({ where: { username: username } })
     let rEmail = await db.User.findOne({ where: { email: email } })
-    let code:string = uuidv4() 
+    let code: string = uuidv4()
 
-    let emailObject:IEmail = {      
+    let emailObject: IEmail = {
         from: '"TiendApp" <tomygaar@gmail.com>', // sender address
         to: `${email}, tomasqgarcia@gmail.com`, // list of receivers
         subject: "Welcome to Tiendapp", // Subject line
@@ -20,20 +20,22 @@ export  async function userCreate(req: express.Request, res: express.Response) {
         html: `<b>Congratulations ${firstName}! You're almost set to start using Tiendapp.
         Just click the button below to validate your email address.</b><a href="http://localhost:3000/validate?id=${code}">VALIDATE EMAIL</a> 
         <div><p>Account Details</p><p>Username: ${username}</p><p>Email: ${email}</p><p>Name: ${firstName} ${lastName}</p></div>`, // html body
-      }
+    }
 
     if (rUsername === null) {
         if (rEmail === null) {
-            let userCreated = await db.User.create({
+            await db.User.create({
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
                 password: pass,
                 username: username,
                 role: Role.disabled,
-                code: code
+                code: code,
+                forcePassword: false
+
             })
-            
+
 
             // await db.User.addRole(userCreated[0],{roleId:2})
 
