@@ -4,6 +4,7 @@ import passportJWT from "passport-jwt";
 import passportHttpBearer from "passport-http-bearer";
 import db from './models';
 import config from './lib/config';
+import googleIds from './config/GOAuthKeys';
 
 const BearerStrategy = passportHttpBearer.Strategy;
 const JWTStrategy = passportJWT.Strategy
@@ -62,8 +63,8 @@ passport.use('verificationKey',new JWTStrategy(optsVerification, async (payload,
 }));
 
 passport.use(new GoogleStrategy({
-  clientID: `${process.env.GOOGLE_CLIENT_ID}`,
-  clientSecret: `${process.env.GOOGLE_CLIENT_SECRET}`,
+  clientID: googleIds.googleIds.GOOGLE_CLIENT_ID,
+  clientSecret: googleIds.googleIds.GOOGLE_CLIENT_SECRET,
   callbackURL: "/api/auth/google/callback"
 },
   async function (accessToken: any, refreshToken: any, profile: any, done: any) {

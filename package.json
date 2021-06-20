@@ -55,6 +55,7 @@
         "passport-http-bearer": "^1.0.1",
         "passport-jwt": "^4.0.0",
         "passport-local": "^1.0.0",
+        "passport-twitter": "^1.0.4",
         "pg": "^8.6.0",
         "sequelize": "^6.6.2",
         "stripe": "^8.156.0",
