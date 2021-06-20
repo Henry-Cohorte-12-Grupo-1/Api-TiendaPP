@@ -44,6 +44,24 @@ async function ordersController(req: express.Request, res: express.Response) {
     }
 }
 
+export const updateOrder = (req: express.Request, res: express.Response) => {
+    const { id, status } = req.body
+    console.log("entra a updateOrder")
+    try {
+        db.Order.update({
+            status: status
+        }, {
+            where: {
+                id: id
+            }
+        }
+        )
+        res.send("Product Updated")
+    } catch (error: any) {
+        res.send(error.message)
+    }
+}
+
 export const createDummyOrders = () => {
     orders.map(async (or) => {
         await db.Order.create(or);
