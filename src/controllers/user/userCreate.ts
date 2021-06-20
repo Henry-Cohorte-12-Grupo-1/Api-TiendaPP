@@ -18,8 +18,9 @@ export async function userCreate(req: express.Request, res: express.Response) {
         subject: "Welcome to Tiendapp", // Subject line
         text: `Welcome to Tiendapp`, // plain text body
         html: `<b>Congratulations ${firstName}! You're almost set to start using Tiendapp.
-        Just click the button below to validate your email address.</b><a href="http://localhost:3000/validate?id=${code}">VALIDATE EMAIL</a> 
-        <div><p>Account Details</p><p>Username: ${username}</p><p>Email: ${email}</p><p>Name: ${firstName} ${lastName}</p></div>`, // html body
+        Just click the button below to validate your email address.
+        <b></b><a href="http://localhost:3000/validate?id=${code}">VALIDATE EMAIL</a> 
+        <div><p>Account Details</p><p>Username: ${username}</p><p>Email: ${email}</p></div>`, // html body
     }
 
     if (rUsername === null) {
