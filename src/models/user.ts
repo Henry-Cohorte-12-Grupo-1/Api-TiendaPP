@@ -14,7 +14,8 @@ interface UserAttributes {
     lastName: string;
     role: number;
     code:string;
-    forcePassword:boolean
+    forcePassword:boolean;
+    googleId: string
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -32,7 +33,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
         lastName!: string;
         role!:number;
         code!:string;
-        forcePassword!:boolean
+        forcePassword!:boolean;
+        googleId!: string
 
         static associate(models: any) {
             // define association here
@@ -86,6 +88,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 type: DataTypes.BOOLEAN,
                 defaultValue:false,
                 allowNull: false,
+            },
+            googleId: {
+                type: DataTypes.STRING,
+                allowNull: true,
             },
         },
         {

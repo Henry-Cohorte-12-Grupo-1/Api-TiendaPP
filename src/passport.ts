@@ -7,6 +7,7 @@ import config from './lib/config';
 
 const BearerStrategy = passportHttpBearer.Strategy;
 const JWTStrategy = passportJWT.Strategy
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const opts: passportJWT.StrategyOptions = {
     jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -59,5 +60,54 @@ passport.use('verificationKey',new JWTStrategy(optsVerification, async (payload,
     console.log(error);
   }
 }));
+
+passport.use(new GoogleStrategy({
+  clientID: `${process.env.GOOGLE_CLIENT_ID}`,
+  clientSecret: `${process.env.GOOGLE_CLIENT_SECRET}`,
+  callbackURL: "/api/auth/google/callback"
+},
+  async function (accessToken: any, refreshToken: any, profile: any, done: any) {
+
+    const user = await db.User.findOne({ where: { googleId: profile.id } });
+
+    if (user) {
+      return done(null, user.dataValues)
+    } else {
+      const createUser = await db.User.create({
+        username: profile.id,
+        password: profile.id,
+        email: profile.emails[0].value,
+        firstName: profile.name.givenName,
+        lastName: profile.name.familyName,
+        googleId: profile.id,
+        role: 2,
+      })
+      return done(null, createUser.dataValues)
+    }
+  }
+
+));
+
+passport.serializeUser(async (userId: any, done: any) => {
+  try {
+    return done(null, userId);
+  }
+  catch (error: any) {
+    console.log("caught", error.message);
+  }
+});
+
+passport.deserializeUser(async (id: any, done: any) => {
+  try {
+    const User = await db.User.findByPk(id)
+    if (User) {
+      done(null, User)
+    }
+  }
+  catch (error: any) {
+    console.log("caught", error.message);
+  }
+});
+
 
 export default passport;
