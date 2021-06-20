@@ -20,6 +20,9 @@ function createTokenVerification(user: any, key:number) {
       });
 }
 
+export function addCartItem(userId: string, productId: string, quantity: number){
+    db.CartItem.create({userId, productId, quantity})
+}
 
 const login = async (req: express.Request, res: express.Response) => {
     const key = Math.floor(100000 + Math.random() * 900000);
@@ -32,14 +35,15 @@ const login = async (req: express.Request, res: express.Response) => {
     console.log('--------------------------------')
     console.log(resp);
     console.log('--------------------------------')
-    
+    console.log('CART IS', typeof cart, cart)
     
 
-   function addCartItem(userId: string, productId: string, quantity: number){
-       db.CartItem.create({userId, productId, quantity})
-   }
+   
     // de guestCart a userCart
-    cart.forEach((cartItem:any) => addCartItem(resp.userId,cartItem.productId, cartItem.quantity))
+    if(cart.length != 0 && resp){
+        cart.forEach((cartItem:any) => addCartItem(resp.userId,cartItem.productId, cartItem.quantity))
+    }
+    
    
 
 

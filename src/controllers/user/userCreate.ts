@@ -3,10 +3,11 @@ import express, { Request, Response } from 'express';
 import {Role} from '../../interfaces/role'
 import {Mailer} from '../mailer/nodeMailer'
 import { IEmail } from '../../interfaces/mailer';
+import {addCartItem} from '../login/login'
 const { v4: uuidv4 } = require('uuid')
 
 export  async function userCreate(req: express.Request, res: express.Response) {
-    const { firstName, lastName, email, pass, username } = req.body;
+    const { firstName, lastName, email, pass, username, localCart} = req.body;
 
     let rUsername = await db.User.findOne({ where: { username: username } })
     let rEmail = await db.User.findOne({ where: { email: email } })
@@ -33,6 +34,12 @@ export  async function userCreate(req: express.Request, res: express.Response) {
                 role: Role.disabled,
                 code: code
             })
+            .then(() => {
+                const newUserId = userCreated.userId
+                localCart.forEach((cartItem: any) => addCartItem(newUserId, cartItem.productId, cartItem.quantity))
+            })
+            .catch((e: Object) => console.log(e))
+
             
 
             // await db.User.addRole(userCreated[0],{roleId:2})
