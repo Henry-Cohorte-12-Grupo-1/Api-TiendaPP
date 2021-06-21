@@ -13,8 +13,8 @@ interface UserAttributes {
     firstName: string;
     lastName: string;
     role: number;
-    code:string;
-    forcePassword:boolean;
+    code: string;
+    forcePassword: boolean;
     googleId: string;
     gitHubId: string
 }
@@ -32,9 +32,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
         email!: string;
         firstName!: string;
         lastName!: string;
-        role!:number;
-        code!:string;
-        forcePassword!:boolean;
+        role!: number;
+        code!: string;
+        forcePassword!: boolean;
         googleId!: string;
         gitHubId!: string
 
@@ -45,6 +45,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
             User.hasMany(models.Product, { foreignKey: 'userId' });
             User.hasOne(models.Cart, { foreignKey: 'userId' });
             User.hasMany(models.CartItem, { foreignKey: 'userId' });
+            User.hasMany(models.Review, { foreignKey: 'userId' });
 
         }
     }
@@ -88,7 +89,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
             },
             forcePassword: {
                 type: DataTypes.BOOLEAN,
-                defaultValue:false,
+                defaultValue: false,
                 allowNull: false,
             },
             googleId: {
