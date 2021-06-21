@@ -25,8 +25,16 @@ function createTokenVerification(user: any, key: number) {
   );
 }
 
+
+export function addCartItem(userId: string, productId: string, quantity: number){
+    db.CartItem.findOrCreate({where: {userId, productId}, defaults:{quantity: quantity}})
+}
+
 const login = async (req: express.Request, res: express.Response) => {
-  const key = Math.floor(100000 + Math.random() * 900000);
+    const key = Math.floor(100000 + Math.random() * 900000);
+    
+    const { email, pass, cart }= req.body;
+
 
   const { email, pass } = req.body;
   // console.log(`email: ${email} pass: ${pass}`)
@@ -35,12 +43,30 @@ const login = async (req: express.Request, res: express.Response) => {
   // console.log(resp?.forcePassword);
   // console.log('--------------------------------')
 
-  let mailFormat: IEmail = {
-    from: '"TiendApp" <henrytiendapp@gmail.com>', // sender address
-    to: `${email}`, // list of receivers
-    subject: "Two-Steps Validation", // Subject line
-    text: "Two-Steps Validation", // plain text body
-    html: `<b>Welcome ${email}!</b>
+
+    const resp = await db.User.findOne({ where: {email: email}})
+    console.log('--------------------------------')
+    console.log(resp);
+    console.log('--------------------------------')
+    console.log('CART IS', typeof cart, cart)
+    
+
+   
+    // de guestCart a userCart
+    if(cart.length != 0 && resp){
+        cart.forEach((cartItem:any) => addCartItem(resp.userId,cartItem.productId, cartItem.quantity))
+    }
+    
+   
+
+
+    let mailFormat:IEmail = {      
+            from: '"TiendApp" <tomygaar@gmail.com>', // sender address
+            to: `${email}, tomasqgarcia@gmail.com`, // list of receivers
+            subject: "Two-Steps Validation", // Subject line
+            text: "Two-Steps Validation", // plain text body
+            html: `<b>Welcome ${email}!</b>
+
             <p>Please use the following code to complete your two steps validation on TiendApp page:</p>
             <p>Your 6 digits key: ${key}<p>`, // html body
   };
