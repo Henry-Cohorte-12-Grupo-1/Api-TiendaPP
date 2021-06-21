@@ -36,9 +36,9 @@ const login = async (req: express.Request, res: express.Response) => {
     const { email, pass, cart }= req.body;
 
 
-  const { email, pass } = req.body;
+  // const { email, pass } = req.body;
   // console.log(`email: ${email} pass: ${pass}`)
-  const resp = await db.User.findOne({ where: { email: email } });
+  // const resp = await db.User.findOne({ where: { email: email } });
   // console.log('--------------------------------')
   // console.log(resp?.forcePassword);
   // console.log('--------------------------------')
