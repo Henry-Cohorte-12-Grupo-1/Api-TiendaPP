@@ -1,7 +1,5 @@
-import express from "express";
-
-async function paypalController(req: express.Request, res: express.Response){
-  return res.send("paypal :D")
+async function paypalController() {
+  return console.log("paypal :D")
 }
 
 
