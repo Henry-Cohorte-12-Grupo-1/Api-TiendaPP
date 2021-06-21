@@ -1,8 +1,8 @@
 export const roles = [
-    {
-        title: "ADMIN",
-    },
-    {
-        title: "USER",
-    },
+  {
+    title: "ADMIN",
+  },
+  {
+    title: "USER",
+  },
 ];
