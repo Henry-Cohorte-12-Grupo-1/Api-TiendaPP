@@ -1,8 +1,8 @@
-import { Router } from 'express'
-import searchController from '../controllers/search/search'
+import { Router } from "express";
+import searchController from "../controllers/search/search";
 
-const search = Router()
+const search = Router();
 
-search.use('/', searchController)
+search.use("/", searchController);
 
 export default search;

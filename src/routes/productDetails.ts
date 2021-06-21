@@ -1,8 +1,8 @@
-import { Router } from 'express'
-import productDetailsController from '../controllers/product-details/product'
+import { Router } from "express";
+import productDetailsController from "../controllers/product-details/product";
 
-const productDetails = Router()
+const productDetails = Router();
 
-productDetails.use('/:productId', productDetailsController)
+productDetails.use("/:productId", productDetailsController);
 
 export default productDetails;
