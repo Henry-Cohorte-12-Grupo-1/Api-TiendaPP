@@ -13,8 +13,8 @@ export async function userCreate(req: express.Request, res: express.Response) {
     let code: string = uuidv4()
 
     let emailObject: IEmail = {
-        from: '"TiendApp" <tomygaar@gmail.com>', // sender address
-        to: `${email}, tomasqgarcia@gmail.com`, // list of receivers
+        from: '"TiendApp" <henrytiendapp@gmail.com>', // sender address
+        to: `${email}`, // list of receivers
         subject: "Welcome to Tiendapp", // Subject line
         text: `Welcome to Tiendapp`, // plain text body
         html: `<b>Congratulations ${firstName}! You're almost set to start using Tiendapp.

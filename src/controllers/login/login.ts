@@ -37,8 +37,8 @@ const login = async (req: express.Request, res: express.Response) => {
 
 
     let mailFormat: IEmail = {
-        from: '"TiendApp" <tomygaar@gmail.com>', // sender address
-        to: `${email}, tomasqgarcia@gmail.com`, // list of receivers
+        from: '"TiendApp" <henrytiendapp@gmail.com>', // sender address
+        to: `${email}`, // list of receivers
         subject: "Two-Steps Validation", // Subject line
         text: "Two-Steps Validation", // plain text body
         html: `<b>Welcome ${email}!</b>
