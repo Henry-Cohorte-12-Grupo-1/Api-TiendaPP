@@ -1,10 +1,8 @@
-import { Router } from 'express'
-import categoriesController from '../controllers/products/categories'
+import { Router } from "express";
+import categoriesController from "../controllers/products/categories";
 
-const categories = Router()
+const categories = Router();
 
-categories.get('/', categoriesController)
-
-
+categories.get("/", categoriesController);
 
 export default categories;
