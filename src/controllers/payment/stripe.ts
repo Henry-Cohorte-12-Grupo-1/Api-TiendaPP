@@ -10,7 +10,7 @@ export async function getController(
   //return res.status(400).send("Se rompió todo")
   return res.status(400).send("Get a Stripe");
   // Lookup the payment methods available for the customer
-  console.log("le query",req.query)
+  console.log("le query", req.query);
   try {
     const customerId = req.query.customer;
     const paymentMethods = await stripe.paymentMethods.list({
@@ -31,7 +31,6 @@ export async function getController(
     } else {
       return res.status(400).send("Se rompió todo");
     }
-
   } catch (error: any) {
     console.log("caught", error.message);
   }
@@ -41,8 +40,7 @@ export async function payController(
   req: express.Request,
   res: express.Response
 ) {
-  console.log("le query", req.body.mount);
-  const OrderAmount = parseInt(req.body.mount) 
+  const OrderAmount = parseInt(req.body.mount);
   // Alternatively, set up a webhook to listen for the payment_intent.succeeded event
   // and attach the PaymentMethod to a new Customer
   try {
@@ -57,8 +55,7 @@ export async function payController(
     res.send({
       clientSecret: paymentIntent.client_secret,
     });
-    
-  } catch (error:any) {
+  } catch (error: any) {
     console.log("caught", error.message);
   }
 }
