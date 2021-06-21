@@ -12,7 +12,11 @@ async function productDetailsController(req: express.Request, res: express.Respo
             },
             include: [{
                 model: db.Review,
-                attributes: ['score', 'review']
+                attributes: ['score', 'review'],
+                include: {
+                    model: db.User,
+                    attributes: ['username']
+                }
             },
             {
                 model: db.Image,
