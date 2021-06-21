@@ -1,13 +1,22 @@
-import express from "express";
+
 import db from '../../../models'
 
 
 // { userId: numero,
 //   items: [] }
 
-async function deleteCart(req: express.Request, res: express.Response) {
-    return console.log("estoy en deleteCart")
 
+
+async function deleteCart(userId: string) {
+
+    await db.CartItem.destroy({
+        where: {
+            userId: userId
+        },
+        force: true
+    })
+
+    return console.log("estoy en deleteCart")
 }
 
 

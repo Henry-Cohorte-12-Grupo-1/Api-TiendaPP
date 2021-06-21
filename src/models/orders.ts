@@ -3,7 +3,8 @@ import { Model } from 'sequelize'
 
 interface OrderAttributes {
     quantity: number;
-    status: string
+    status: string;
+    productId: string
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -14,7 +15,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
          * The `models/index` file will call this method automatically.
          */
         quantity!: number;
-        status!: string
+        status!: string;
+        productId!: string;
 
         static associate(models: any) {
             // define association here
@@ -25,7 +27,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
     Order.init(
         {
             quantity: DataTypes.INTEGER,
-            status: DataTypes.STRING
+            status: DataTypes.STRING,
+            productId: DataTypes.UUID
         },
         {
             sequelize,

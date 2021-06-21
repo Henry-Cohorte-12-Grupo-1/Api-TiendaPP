@@ -1,6 +1,5 @@
-import express from "express";
 
-async function stock(req: express.Request, res: express.Response) {
+async function stock() {
     return console.log("estoy en stock")
 }
 
