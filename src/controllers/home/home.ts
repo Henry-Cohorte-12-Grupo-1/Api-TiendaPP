@@ -1,7 +1,6 @@
-import express from 'express'
+import express from "express";
 
-function homeController (req:express.Request, res:express.Response){
-    res.send('algo')
+function homeController(req: express.Request, res: express.Response) {
+  res.send("algo");
 }
-export default homeController
-
+export default homeController;

@@ -1,19 +1,25 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import db from "../../models";
 
 const userUpdate = async (req: express.Request, res: express.Response) => {
-    const { role, userId, username } = req.body;
-    console.log(userId)
-
-    let user = await db.User.update({ roleId: role }, {
+  const { role, userId, username, passReset } = req.body;
+  //console.log(userId,passReset)
+  try {
+    let user = await db.User.update(
+      { roleId: role, forcePassword: passReset },
+      {
         where: { username: username },
-    })
+      }
+    );
 
-    if(user){
-        res.send('succesfully updated')
+    if (user) {
+      return res.send("succesfully updated");
     } else {
-        res.send('error')
+      return res.send("error");
     }
-}
+  } catch (error: any) {
+    console.log("caught", error.message);
+  }
+};
 
-export default userUpdate
+export default userUpdate;

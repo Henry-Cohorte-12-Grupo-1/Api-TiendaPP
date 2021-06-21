@@ -13,7 +13,10 @@ interface UserAttributes {
     firstName: string;
     lastName: string;
     role: number;
-    code:string
+    code: string;
+    forcePassword: boolean;
+    googleId: string;
+    gitHubId: string
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -29,8 +32,11 @@ module.exports = (sequelize: any, DataTypes: any) => {
         email!: string;
         firstName!: string;
         lastName!: string;
-        role!:number;
-        code!:string
+        role!: number;
+        code!: string;
+        forcePassword!: boolean;
+        googleId!: string;
+        gitHubId!: string
 
         static associate(models: any) {
             // define association here
@@ -39,6 +45,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
             User.hasMany(models.Product, { foreignKey: 'userId' });
             User.hasOne(models.Cart, { foreignKey: 'userId' });
             User.hasMany(models.CartItem, { foreignKey: 'userId' });
+            User.hasMany(models.Review, { foreignKey: 'userId' });
 
         }
     }
@@ -77,6 +84,19 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 allowNull: true,
             },
             code: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
+            forcePassword: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false,
+                allowNull: false,
+            },
+            googleId: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
+            gitHubId: {
                 type: DataTypes.STRING,
                 allowNull: true,
             },

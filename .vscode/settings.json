@@ -1,0 +1,5 @@
+{
+  "typescript.format.enable": false,
+  "json.format.enable": false,
+  "php.validate.enable": false
+}

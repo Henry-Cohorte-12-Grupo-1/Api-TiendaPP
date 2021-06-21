@@ -1,13 +1,8 @@
-import { Router } from 'express'
-import userProductsController from '../controllers/user/userProducts'
+import { Router } from "express";
+import userProductsController from "../controllers/user/userProducts";
 
-const userProducts = Router()
+const userProducts = Router();
 
-userProducts.use('/:userName', userProductsController)
+userProducts.use("/:userName", userProductsController);
 
 export default userProducts;
-
-
-
-
-

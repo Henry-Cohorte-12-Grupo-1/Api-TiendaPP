@@ -1,8 +1,6 @@
 import db from "../../models";
 import { Sequelize } from "sequelize";
 
-//import { products } from "../../seeders/product";
-
 //const { Op } = require("sequelize");
 
 export async function dbProductRequest(
@@ -18,7 +16,7 @@ export async function dbProductRequest(
   let userId: string = "";
   name = name.toLowerCase();
   try {
-    if (username !== "") {
+    if (username && username !== "") {
       const userSearch = await db.User.findOne({
         where: {
           username: username,
