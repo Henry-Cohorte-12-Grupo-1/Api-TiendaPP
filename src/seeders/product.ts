@@ -70,7 +70,7 @@ export const products = [
     price: 59.97,
     quantity: 92,
     description:
-      "Awesome backpack for every opportunity. Durable and waterproof. Wanda if you are reading this, give us a 10 please.",
+      "Awesome backpack for every opportunity. Durable and waterproof. Graet for bringing over to the mountain and walking outdoors ",
     categoryId: 1003,
   },
   {

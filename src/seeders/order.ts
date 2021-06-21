@@ -21,13 +21,13 @@ export const orders = [
     productId: "c04d0fa6-a561-470b-9907-529ee916ca0d",
     userId: "68f58789-37b2-4a60-838e-93c8eedf7fcc",
     quantity: 2,
-    status: "processing",
+    status: "completed",
   },
   {
     productId: "cce405a8-873b-4ceb-a9b1-8fd6f4baf250",
     userId: "68f58789-37b2-4a60-838e-93c8eedf7fcc",
     quantity: 1,
-    status: "processing",
+    status: "completed",
   },
   {
     productId: "3490bb8b-3a0d-41a2-86aa-32922c57edbb",
