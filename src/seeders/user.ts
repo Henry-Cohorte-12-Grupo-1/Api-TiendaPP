@@ -6,7 +6,6 @@ export const users = [
     email: "tomasqgarcia@gmail.com",
     firstName: "tomas",
     lastName: "garcia",
-    roleId: 1,
     role: 1,
   },
   {
@@ -16,7 +15,6 @@ export const users = [
     email: "manu@mail.com",
     firstName: "manu",
     lastName: "doe",
-    roleId: 2,
     role: 2,
   },
   {
@@ -26,7 +24,6 @@ export const users = [
     email: "juan@mail.com",
     firstName: "juan",
     lastName: "doe",
-    roleId: 2,
     role: 3,
   },
   {
@@ -36,7 +33,6 @@ export const users = [
     email: "lean@mail.com",
     firstName: "lena",
     lastName: "doe",
-    roleId: 2,
     role: 2,
   },
 ];
