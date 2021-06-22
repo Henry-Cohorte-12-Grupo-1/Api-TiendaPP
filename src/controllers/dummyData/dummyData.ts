@@ -12,7 +12,7 @@ import { createDummyCartItems } from "../cart/cart";
 //then you can use the routes in each controller to get the data
 export function loadDummyData(req: Request, res: Response) {
   // res.send("<h1>BUENAS</h1>");
-  createRoles();
+  // createRoles();
   createDummyUsers();
   createDummyCategories();
   createDummyProducts();
