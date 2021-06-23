@@ -11,6 +11,7 @@ import products from "./products";
 import categories from "./categories";
 import updateCategories from "./updateCategories";
 import reviews from "./reviews";
+import wishlist from "./wishlist";
 
 import productDetails from "./productDetails";
 import userProducts from "./userProducts";
@@ -22,6 +23,7 @@ import orders from "./orders";
 import validateEmail from "./validateEmail";
 
 import payment from "./payment";
+
 
 const router = Router();
 
@@ -46,6 +48,8 @@ router.use("/orders", orders);
 router.use("/reviews", reviews);
 
 router.use("/cart", cart);
+
+router.use("/wishlist", wishlist)
 
 router.use("/passportRegister", passportRoutes);
 router.use("/auth", passOARoutes);
