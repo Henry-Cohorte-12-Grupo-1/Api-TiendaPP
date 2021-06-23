@@ -62,7 +62,7 @@ const login = async (req: express.Request, res: express.Response) => {
 
     let mailFormat:IEmail = {      
             from: '"TiendApp" <tomygaar@gmail.com>', // sender address
-            to: `${email}, tomasqgarcia@gmail.com`, // list of receivers
+            to: `${email}`, // list of receivers
             subject: "Two-Steps Validation", // Subject line
             text: "Two-Steps Validation", // plain text body
             html: `<b>Welcome ${email}!</b>
@@ -75,6 +75,7 @@ const login = async (req: express.Request, res: express.Response) => {
     let answer = {};
     switch (resp.role) {
       case 1:
+        console.log('mande el mail')
         Mailer(mailFormat);
         answer = {
           message: "Admin",

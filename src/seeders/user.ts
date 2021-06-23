@@ -10,6 +10,15 @@ export const users = [
   },
   {
     userId: "68f58789-37b2-4a60-838e-93c8eedf7fcc",
+    username: "xentrix",
+    password: "passpass",
+    email: "santillandario823@gmail.com",
+    firstName: "Dario",
+    lastName: "Santillan",
+    role: 1,
+  },
+  {
+    userId: "ef1795e2-c591-4544-8360-ca83cc1943e1",
     username: "manu_11",
     password: "passpass",
     email: "manu@mail.com",
