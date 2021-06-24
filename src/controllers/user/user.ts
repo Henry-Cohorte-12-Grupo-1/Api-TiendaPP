@@ -5,11 +5,13 @@ import { users } from "../../seeders/user";
 //For testing purposes, Gets all the user DB with roles.
 export function getAllUsers(req: Request, res: Response) {
   db.User.findAll({
-    include: {
-      model: db.Role,
-    },
+    // include: {
+    //   model: db.Role,
+    // },
   })
+    // .then((result: object) => res.json(result))
     .then((result: object) => res.json(result))
+
     .catch((err: object) => console.error(err));
 }
 

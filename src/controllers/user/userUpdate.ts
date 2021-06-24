@@ -3,14 +3,21 @@ import db from "../../models";
 
 const userUpdate = async (req: express.Request, res: express.Response) => {
   const { role, userId, username, passReset } = req.body;
-  //console.log(userId,passReset)
+  console.log('----------------------')
+  console.log(role, username, passReset)
+  console.log('----------------------')
+
   try {
     let user = await db.User.update(
-      { roleId: role, forcePassword: passReset },
+      { role: role, forcePassword: passReset },
       {
         where: { username: username },
       }
     );
+    console.log('----------------------')
+    console.log('user', user);
+    console.log('----------------------')
+
 
     if (user) {
       return res.send("succesfully updated");
