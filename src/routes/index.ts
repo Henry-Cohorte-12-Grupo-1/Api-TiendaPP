@@ -23,6 +23,7 @@ import orders from "./orders";
 import validateEmail from "./validateEmail";
 
 import payment from "./payment";
+import sellerProfile from "./sellerprofile"
 
 
 const router = Router();
@@ -46,6 +47,7 @@ router.use("/user", user);
 router.use("/product", product);
 router.use("/orders", orders);
 router.use("/reviews", reviews);
+router.use("/seller", sellerProfile);
 
 router.use("/cart", cart);
 
