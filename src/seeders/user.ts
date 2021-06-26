@@ -1,6 +1,6 @@
 export const users = [
   {
-    userId: "6d2ba377-b219-4925-b6df-4cbc8575ce50",
+    userId: "ef1795e2-c591-4544-8360-ca83cc1943e1",
     username: "tomas_10",
     password: "passpass",
     email: "tomasqgarcia@gmail.com",
@@ -18,7 +18,7 @@ export const users = [
     role: 1,
   },
   {
-    userId: "ef1795e2-c591-4544-8360-ca83cc1943e1",
+    userId: "6d2ba377-b219-4925-b6df-4cbc8575ce50",
     username: "manu_11",
     password: "passpass",
     email: "manu@mail.com",

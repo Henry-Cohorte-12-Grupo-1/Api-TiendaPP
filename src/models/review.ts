@@ -4,7 +4,6 @@ import { Model } from 'sequelize'
 interface ReviewAttributes {
     score: number;
     review: string;
-    userId: string
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -16,7 +15,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
          */
         score!: number;
         review!: string;
-        userId!: string
 
         static associate(models: any) {
             // define association here
@@ -28,7 +26,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
         {
             score: DataTypes.INTEGER,
             review: DataTypes.TEXT,
-            userId: DataTypes.UUID
         },
         {
             sequelize,

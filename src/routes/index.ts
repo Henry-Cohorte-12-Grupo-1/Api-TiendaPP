@@ -11,6 +11,7 @@ import products from "./products";
 import categories from "./categories";
 import updateCategories from "./updateCategories";
 import reviews from "./reviews";
+import questions from "./questions";
 import wishlist from "./wishlist";
 
 import productDetails from "./productDetails";
@@ -23,6 +24,7 @@ import orders from "./orders";
 import validateEmail from "./validateEmail";
 
 import payment from "./payment";
+
 
 
 const router = Router();
@@ -46,6 +48,7 @@ router.use("/user", user);
 router.use("/product", product);
 router.use("/orders", orders);
 router.use("/reviews", reviews);
+router.use("/questions", questions);
 
 router.use("/cart", cart);
 
