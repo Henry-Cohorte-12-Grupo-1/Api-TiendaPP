@@ -26,6 +26,7 @@ import validateEmail from "./validateEmail";
 import payment from "./payment";
 
 
+
 const router = Router();
 
 //routers

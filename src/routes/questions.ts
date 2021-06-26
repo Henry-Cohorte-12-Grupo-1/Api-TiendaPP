@@ -1,8 +1,12 @@
 import { Router } from "express";
-import questionsController from "../controllers/questions/questions";
+import {questionsController} from "../controllers/questions/questions";
+// import {postCreate} from '../controllers/questions/questions'
 
-const user = Router();
+const questions = Router();
 
-user.post("/", questionsController);
+questions.post("/", questionsController);
+// questions.post("/", postCreate);
+
+
 
 export default questions;
