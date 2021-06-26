@@ -4,9 +4,8 @@ import db from "../../models";
 
 
 async function sellerPageProducts(req: express.Request, res: express.Response) {
-  //busca un producto por id
+
   const username: string = req.params.userName;
-  console.log('------->', username)
   try {
     const matchUser = await db.User.findOne({
       where: {
@@ -14,15 +13,17 @@ async function sellerPageProducts(req: express.Request, res: express.Response) {
       },
     });
 
-    console.log('------>', matchUser)
-
     const sellerId = matchUser.userId;
 
     const profile = await db.SellerProfile.findOne({
       where: { userId: sellerId }
     })
 
-    const allImages: any = await db.SellerProfileImage.findAll({ where: { sellerProfileId: profile.sellerProfileId } })
+    const allImages: any = await db.SellerProfileImage.findAll({
+      where: {
+        sellerProfileId: profile.sellerProfileId
+      }
+    }).then((ims: any[]) => ims.map((i: any) => i.url));
 
     const result: any = { ...profile.dataValues, images: allImages }
 

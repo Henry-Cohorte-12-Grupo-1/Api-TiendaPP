@@ -13,7 +13,7 @@ async function newSellerProfile(
     try {
 
         // --> images [1, 2, 3, 4]
-        // --> imges [2, 3, 5]
+        // --> images [2, 3, 5]
 
         const profile = await db.SellerProfile.findOne({ where: { userId: userId } })
         if (profile) {
@@ -24,9 +24,15 @@ async function newSellerProfile(
             db.SellerProfile.update({ header: header, description: description }, { where: { userId: userId } })
 
             const sellerProfileId = profile.sellerProfileId
-            await db.SellerProfileImages.destroy({ where: { userId: userId } })
+
+            await db.SellerProfileImage.destroy({
+                where: {
+                    sellerProfileId: sellerProfileId
+                },
+                force: true
+            })
             if (images.length) {
-                images.forEach(async (image: string) => await db.SellerProfileImages.create({ sellerProfileId: sellerProfileId, url: image }))
+                images.forEach(async (image: string) => await db.SellerProfileImage.create({ sellerProfileId: sellerProfileId, url: image }))
             }
             res.send(profile)
         } else {
