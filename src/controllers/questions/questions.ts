@@ -18,15 +18,40 @@ export const createDummyQuestions = () => {
 
 
 export const questionsController = async (req: Request, res: Response) => {
-    console.log('lkgjfdlsjgkfdjgkfdljgkfdljdskaljdsa',req.body)
+
     let productId = req.body.id
-    let qs = await db.Question.findAll({
+
+    let userId = await db.Product.findOne({
         where: {
             productId:productId
         }
     })
-    console.log('FINDALL:', qs)
-    return res.send(qs)
+    let qs = await db.Question.findAll({
+        where: {
+            productId:productId
+        },
+    })
+
+    // let resp = qs.map((question:any)=>{question,userId.userId})
+    return res.send({resp: qs, id: userId.userId})
 }
 
-export default questionsController
+export const newController = async (req: Request, res: Response) => {
+    const {question, userId, productId} = req.body;
+    const resp = db.Question.create({
+        question:question,
+        userId:userId,
+        productId:productId,
+    })
+    res.send('succesful question');
+}
+
+export const answerController = async (req: Request, res: Response) => {
+    const { answer, questionId} = req.body;
+    const resp = db.Question.update({answer:answer},
+        {where:{
+            questionId:questionId
+        }
+    })
+    res.send('succesful answer');
+}
