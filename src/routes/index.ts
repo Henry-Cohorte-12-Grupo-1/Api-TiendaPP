@@ -24,6 +24,7 @@ import orders from "./orders";
 import validateEmail from "./validateEmail";
 
 import payment from "./payment";
+import sellerProfile from "./sellerprofile"
 
 
 
@@ -60,6 +61,7 @@ router.use("/auth", passOARoutes);
 router.use("/validate", validateEmail);
 
 router.use("/payment", payment);
+router.use("/seller", sellerProfile);
 
 //Get a Home de prueba
 router.get("/", (req: Request, res: Response) => {
