@@ -1,9 +1,6 @@
 import db from "../../models";
 import express from "express";
 
-
-
-
 async function newSellerProfile(
     req: express.Request,
     res: express.Response
