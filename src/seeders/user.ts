@@ -6,7 +6,7 @@ export const users = [
     email: "tomasqgarcia@gmail.com",
     firstName: "tomas",
     lastName: "garcia",
-    role: 1,
+    role: 2,
   },
   {
     userId: "68f58789-37b2-4a60-838e-93c8eedf7fcc",
