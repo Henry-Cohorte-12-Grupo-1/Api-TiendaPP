@@ -48,6 +48,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
             User.hasMany(models.Review, { foreignKey: 'userId' });
             User.hasMany(models.Wishlist, { foreignKey: 'userId' });
             User.hasMany(models.Question, { foreignKey: 'userId' });
+            User.hasOne(models.Product, { foreignKey: 'userId' });
+            User.hasOne(models.SellerProfile, { foreignKey: 'userId' });
 
         }
     }
