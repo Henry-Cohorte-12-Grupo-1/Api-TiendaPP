@@ -93,7 +93,7 @@ passport.use(
       done: any
     ) {
       try {
-        const user = await db.User.findOne({ where: { googleId: profile.id } });
+        const user = await db.User.findOne({ where: { email: profile.emails[0].value } });
 
         if (user) {
           return done(null, user.dataValues);
