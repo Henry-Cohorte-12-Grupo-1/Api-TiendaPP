@@ -7,8 +7,10 @@ import stock from "./helpers/stock";
 //import { payController } fromn "./stripe";
 
 async function postPayController(req: express.Request, res: express.Response) {
-    const { userId, quantity, items, productId } = req.body
-    deleteCart(userId)
+    const { userId, quantity, items, productId, isBuyNow } = req.body
+    if (!isBuyNow) {
+        deleteCart(userId)
+    }
     order(items, userId)
     stock(items)
     //console.log(req.body)
