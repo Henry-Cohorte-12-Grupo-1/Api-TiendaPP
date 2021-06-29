@@ -38,15 +38,14 @@ passOARoutes.get("/logout", (req, res) => {
   return res.send(req.user);
 });
 
-// routes de GitHub OAuth
+// routes de Twitter OAuth
 
-passOARoutes.get("/github", passport.authenticate("github"));
+passOARoutes.get("/twitter", passport.authenticate("twitter"));
 
-passOARoutes.get(
-  "/github/callback",
-  passport.authenticate("github", { failureRedirect: "/login", session: true }),
+passOARoutes.get("/twitter/callback",
+  passport.authenticate("twitter", { failureRedirect: "/login", session: true }),
   function (req: any, res: Response) {
-    return res.redirect(
+    res.redirect(
       301,
       `http://localhost:3000/tokensignin?token=${jwt.sign(
         {
@@ -59,7 +58,7 @@ passOARoutes.get(
         { expiresIn: 84600 }
       )}`
     );
-  }
-);
+  });
+
 
 export default passOARoutes;
