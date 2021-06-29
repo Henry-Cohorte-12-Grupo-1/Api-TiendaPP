@@ -33,11 +33,6 @@ passOARoutes.get(
   }
 );
 
-passOARoutes.get("/logout", (req, res) => {
-  req.logout();
-  return res.send(req.user);
-});
-
 // routes de Twitter OAuth
 
 passOARoutes.get("/twitter", passport.authenticate("twitter"));
