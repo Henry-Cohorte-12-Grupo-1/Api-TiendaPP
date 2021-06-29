@@ -28,7 +28,7 @@ export const createDummyProducts = () => {
 };
 
 export async function createProduct(req: Request, res: Response) {
-  let { name, description, price, categoryId, joinedImage, quantity } =
+  let { name, description, price, categoryId, joinedImage, quantity, userId } =
     req.body;
   //categorias de prueba
   const imagesArr: string[] = joinedImage.length && joinedImage.split(" - ");
@@ -45,7 +45,7 @@ export async function createProduct(req: Request, res: Response) {
       name: name,
       price: price,
       description: description,
-      userId: "68f58789-37b2-4a60-838e-93c8eedf7fcc",
+      userId: userId,
       quantity: quantity,
       categoryId: categoryId,
     });

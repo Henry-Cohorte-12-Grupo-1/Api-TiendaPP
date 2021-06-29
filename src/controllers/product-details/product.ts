@@ -25,8 +25,14 @@ async function productDetailsController(
           model: db.Image,
           attributes: ["imageId"],
         },
+        {
+          model: db.User,
+          attributes: ["username"]
+        },
       ],
     });
+    
+ 
     return res.send(result);
   } catch (error: any) {
     return res.send(error.message);
