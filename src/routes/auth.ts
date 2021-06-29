@@ -19,7 +19,7 @@ passOARoutes.get(
     //res.send(jwt.sign({userId: req.userId}, 'secretkey', {expiresIn:'5 min'}))}
     return res.redirect(
       301,
-      `http://localhost:3000/tokensignin?token=${jwt.sign(
+      `http://tiendapp.servebeer.com?token=${jwt.sign(
         {
           id: req.user.userId,
           username: req.user.username,
@@ -33,11 +33,6 @@ passOARoutes.get(
   }
 );
 
-passOARoutes.get("/logout", (req, res) => {
-  req.logout();
-  return res.send(req.user);
-});
-
 // routes de Twitter OAuth
 
 passOARoutes.get("/twitter", passport.authenticate("twitter"));
@@ -47,7 +42,7 @@ passOARoutes.get("/twitter/callback",
   function (req: any, res: Response) {
     res.redirect(
       301,
-      `http://localhost:3000/tokensignin?token=${jwt.sign(
+      `http://tiendapp.servebeer.com/tokensignin?token=${jwt.sign(
         {
           id: req.user.userId,
           username: req.user.username,
