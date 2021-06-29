@@ -16,7 +16,7 @@ interface UserAttributes {
     code: string;
     forcePassword: boolean;
     googleId: string;
-    gitHubId: string
+    twitterId: string
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -36,7 +36,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
         code!: string;
         forcePassword!: boolean;
         googleId!: string;
-        gitHubId!: string
+        twitterId!: string
 
         static associate(models: any) {
             // define association here
@@ -100,7 +100,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 type: DataTypes.STRING,
                 allowNull: true,
             },
-            gitHubId: {
+            twitterId: {
                 type: DataTypes.STRING,
                 allowNull: true,
             },
