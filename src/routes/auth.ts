@@ -20,7 +20,7 @@ passOARoutes.get(
     //res.send(jwt.sign({userId: req.userId}, 'secretkey', {expiresIn:'5 min'}))}
     return res.redirect(
       301,
-      `http://tiendapp.servebeer.com?token=${jwt.sign(
+      `http://tiendapp.servebeer.com/tokensignin?token=${jwt.sign(
         {
           id: req.user.userId,
           username: req.user.username,
