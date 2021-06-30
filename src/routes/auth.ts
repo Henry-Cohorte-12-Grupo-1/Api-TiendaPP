@@ -16,7 +16,7 @@ passOARoutes.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   function (req: any, res: Response) {
-    console.log('DDDDDDDDDDDDD, Entro al callback de google')
+    //console.log('DDDDDDDDDDDDD, Entro al callback de google')
     //res.send(jwt.sign({userId: req.userId}, 'secretkey', {expiresIn:'5 min'}))}
     return res.redirect(
       301,
@@ -56,6 +56,33 @@ passOARoutes.get("/twitter/callback",
       )}`
     );
   });
+
+
+
+
+  // routes de GitHub OAuth
+
+passOARoutes.get("/github", passport.authenticate("github"));
+
+passOARoutes.get(
+  "/github/callback",
+  passport.authenticate("github", { failureRedirect: "/login", session: true }),
+  function (req: any, res: Response) {
+    return res.redirect(
+      301,
+      `http://tiendapp.servebeer.com/tokensignin?token=${jwt.sign(
+        {
+          id: req.user.userId,
+          username: req.user.username,
+          email: req.user.email,
+          user: true,
+        },
+        config.JWT_SECRET,
+        { expiresIn: 84600 }
+      )}`
+    );
+  }
+);
 
 
 export default passOARoutes;
