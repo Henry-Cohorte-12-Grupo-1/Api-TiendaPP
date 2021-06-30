@@ -188,9 +188,7 @@ passport.use(
       profile: any,
       done: any
     ) {
-      const user = await db.User.findOne({
-        where: { gitHubId: profile._json.id.toString() },
-      });
+      const user = await db.User.findOne({ where: { email: profile._json.email } });
 
       if (user) {
         return done(null, user);
