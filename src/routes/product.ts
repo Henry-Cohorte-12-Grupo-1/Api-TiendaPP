@@ -5,6 +5,7 @@ import {
   createProduct,
   getProduct,
 } from "../controllers/product/product";
+import passport from "passport";
 
 const product = Router();
 
@@ -12,7 +13,7 @@ product.get("/", getProduct);
 
 product.use("/getallproducts", getAllProducts);
 
-product.post("/", createProduct);
+product.post("/", passport.authenticate("jwt", { session: false }) ,createProduct);
 
 product.put("/", updateProduct);
 
