@@ -93,6 +93,7 @@ passport.use(
       done: any
     ) {
       try {
+        console.log('BBBBBBBBBBBBBBBBBBBBBBB Entro al strategy de google')
         const user = await db.User.findOne({ where: { email: profile.emails[0].value } });
 
         if (user) {
@@ -140,12 +141,12 @@ passport.deserializeUser(async (id: any, done: any) => {
 passport.use(new TwitterStrategy({
   consumerKey: twitterIds.twitterIds.TWITTER_CLIENT_ID,
   consumerSecret: twitterIds.twitterIds.TWITTER_CLIENT_SECRET,
-  callbackURL: "/auth/twitter/callback"
+  callbackURL: "/api/auth/twitter/callback"
 },
   async function (_: any, __: any, profile: any, done: any) {
 
     try {
-      console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', profile);
+      console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, Entro al strategy de Twitter, profile: ', profile);
       const user = await db.User.findOne({ where: { twitterId: profile.id } });
 
       if (user) {

@@ -16,6 +16,7 @@ passOARoutes.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   function (req: any, res: Response) {
+    console.log('DDDDDDDDDDDDD, Entro al callback de google')
     //res.send(jwt.sign({userId: req.userId}, 'secretkey', {expiresIn:'5 min'}))}
     return res.redirect(
       301,
@@ -40,6 +41,7 @@ passOARoutes.get("/twitter", passport.authenticate("twitter"));
 passOARoutes.get("/twitter/callback",
   passport.authenticate("twitter", { failureRedirect: "/login", session: true }),
   function (req: any, res: Response) {
+    console.log('CCCCCCCCCCCCCCCCCCC, Entro al callback de Twitter')
     res.redirect(
       301,
       `http://tiendapp.servebeer.com/tokensignin?token=${jwt.sign(
