@@ -74,3 +74,21 @@ export async function dbImageRequest(id: string) {
     console.log("caught", error.message);
   }
 }
+
+export async function dbSellerRequest(username: string) {
+  username = username.toLowerCase();
+  try {
+    const sellers = await db.User.findAll({
+      where: {
+        username: Sequelize.where(
+          Sequelize.fn("LOWER", Sequelize.col("username")),
+          "LIKE",
+          "%" + username + "%"
+        ),
+      },
+    });
+    return sellers;
+  } catch (error: any) {
+    console.log("caught", error.message);
+  }
+}
