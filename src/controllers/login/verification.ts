@@ -9,6 +9,7 @@ function createTokenAdmin() {
 }
 const verification = (req: Request, res: Response) => {
   // return res.send({token: createTokenAdmin()})
+  if (!req.headers || !req.headers.hasOwnProperty('authorization')) return res.send('unauthorized').status(401);
   return res.send({ token: createTokenAdmin() });
 };
 
