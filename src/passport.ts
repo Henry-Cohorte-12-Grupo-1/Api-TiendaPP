@@ -6,11 +6,15 @@ import db from "./models";
 import config from "./lib/config";
 import googleIds from "./config/GOAuthKeys";
 import twitterIds from "./config/GOAuthKeys";
+import facebookIds from "./config/GOAuthKeys";
+import gitHubIds from "./config/GOAuthKeys";
 
 const BearerStrategy = passportHttpBearer.Strategy;
 const JWTStrategy = passportJWT.Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
+const GitHubStrategy = require("passport-github").Strategy;
 
 const opts: passportJWT.StrategyOptions = {
   jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -146,7 +150,6 @@ passport.use(new TwitterStrategy({
   async function (_: any, __: any, profile: any, done: any) {
 
     try {
-      console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, Entro al strategy de Twitter, profile: ', profile);
       const user = await db.User.findOne({ where: { twitterId: profile.id } });
 
       if (user) {
@@ -169,5 +172,44 @@ passport.use(new TwitterStrategy({
 
   }
 ));
+
+// GitHub OAuth
+
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: gitHubIds.gitHubIds.GITHUB_CLIENT_ID,
+      clientSecret: gitHubIds.gitHubIds.GITHUB_CLIENT_SECRET,
+      callbackURL: "/api/auth/github/callback",
+    },
+    async function (
+      accessToken: any,
+      refreshToken: any,
+      profile: any,
+      done: any
+    ) {
+      const user = await db.User.findOne({
+        where: { gitHubId: profile._json.id.toString() },
+      });
+
+      if (user) {
+        return done(null, user);
+      } else {
+        const createUser = await db.User.create({
+          username: profile._json.login,
+          password: profile.id,
+          email: profile._json.email
+            ? profile._json.email
+            : "noemail@aemail.com",
+          firstName: profile._json.login,
+          lastName: profile._json.login,
+          gitHubId: profile._json.id.toString(),
+          role: 2,
+        });
+        return done(null, createUser);
+      }
+    }
+  )
+);
 
 export default passport;
