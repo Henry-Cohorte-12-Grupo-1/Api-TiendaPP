@@ -36,7 +36,7 @@ passOARoutes.get(
 
 // routes de Twitter OAuth
 
-passOARoutes.get("/twitter", passport.authenticate("twitter"));
+/*passOARoutes.get("/twitter", passport.authenticate("twitter"));
 
 passOARoutes.get("/twitter/callback",
   passport.authenticate("twitter", { failureRedirect: "/login", session: true }),
@@ -55,7 +55,7 @@ passOARoutes.get("/twitter/callback",
         { expiresIn: 84600 }
       )}`
     );
-  });
+  });*/
 
 
 
