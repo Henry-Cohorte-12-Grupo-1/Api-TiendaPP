@@ -182,7 +182,7 @@ passport.use(
         {
             clientID: gitHubIds.gitHubIds.GITHUB_CLIENT_ID,
             clientSecret: gitHubIds.gitHubIds.GITHUB_CLIENT_SECRET,
-            callbackURL: "/api/auth/github/callback",
+            callbackURL: `${FRONT_URL}/api/auth/github/callback`,
         },
         async function (
             accessToken: any,
