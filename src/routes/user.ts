@@ -7,8 +7,8 @@ import passport from "passport";
 
 const user = Router();
 
-user.use("/getallusers", getAllUsers);
-user.use("/userUpdate", passport.authenticate("admin",{session:false}),userUpdate);
+user.use("/getallusers", passport.authenticate("admin",{session:false}), getAllUsers);
+user.use("/userUpdate", passport.authenticate("admin",{session:false}), userUpdate);
 user.use("/userCreate", userCreate);
 user.put("/passReset", passReset);
 
