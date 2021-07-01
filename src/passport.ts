@@ -142,7 +142,7 @@ passport.deserializeUser(async (id: any, done: any) => {
 
 // Twitter Oauth
 
-passport.use(new TwitterStrategy({
+/*passport.use(new TwitterStrategy({
   consumerKey: twitterIds.twitterIds.TWITTER_CLIENT_ID,
   consumerSecret: twitterIds.twitterIds.TWITTER_CLIENT_SECRET,
   callbackURL: "/api/auth/twitter/callback"
@@ -171,7 +171,7 @@ passport.use(new TwitterStrategy({
     }
 
   }
-));
+));*/
 
 // GitHub OAuth
 
@@ -188,9 +188,7 @@ passport.use(
       profile: any,
       done: any
     ) {
-      const user = await db.User.findOne({
-        where: { gitHubId: profile._json.id.toString() },
-      });
+      const user = await db.User.findOne({ where: { email: profile._json.email } });
 
       if (user) {
         return done(null, user);
