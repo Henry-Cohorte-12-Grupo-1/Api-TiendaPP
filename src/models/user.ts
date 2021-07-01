@@ -18,6 +18,7 @@ interface UserAttributes {
     googleId: string;
     twitterId: string;
     gitHubId: string;
+    profilePic: string;
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -39,6 +40,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
         googleId!: string;
         twitterId!: string;
         gitHubId!: string;
+        profilePic!: string;
 
         static associate(models: any) {
             // define association here
@@ -107,6 +109,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 allowNull: true,
             },
             gitHubId: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
+            profilePic: {
                 type: DataTypes.STRING,
                 allowNull: true,
             }
