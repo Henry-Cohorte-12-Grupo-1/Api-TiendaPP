@@ -201,4 +201,25 @@ export const images = [
 
         //: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
     },
+    {
+        productId: "02877f95-5376-4eb0-a698-665b9b5eab98",
+        imageId: "mfutm7nhjixylvzf5ozv",
+        //name: "DANVOUY Womens T Shirt Casual Cotton Short",
+
+        //: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
+    },
+    {
+        productId: "a009c1b5-c592-4282-b44f-d94ae2b22b29",
+        imageId: "fpftbklq0faiy7rzksw2",
+        //name: "DANVOUY Womens T Shirt Casual Cotton Short",
+
+        //: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
+    },
+    {
+        productId: "f0983987-6c38-4fac-afc3-16f125e4c7a0",
+        imageId: "ql7spe4lj5vrsurk2lb7",
+        //name: "DANVOUY Womens T Shirt Casual Cotton Short",
+
+        //: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
+    },
 ];

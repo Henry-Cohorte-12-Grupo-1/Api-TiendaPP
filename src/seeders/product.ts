@@ -15,7 +15,7 @@ export const products = [
 
     {
         productId: "cce405a8-873b-4ceb-a9b1-8fd6f4baf250",
-        userId: "6d2ba377-b219-4925-b6df-4cbc8575ce50",
+        userId: "029c1d76-306f-4bf9-bb9c-32cd24533a59",
         name: "2021 Apple TV 4K (32GB)",
         price: 179,
         status: "running_low",
@@ -57,7 +57,7 @@ export const products = [
     },
     {
         productId: "c04d0fa6-a561-470b-9907-529ee916ca0d",
-        userId: "6d2ba377-b219-4925-b6df-4cbc8575ce50",
+        userId: "9de81b64-1c4a-49d7-b9c5-7554d1d35df2",
         name: "Kitchen Thermometer",
         price: 3,
         quantity: 1,
@@ -131,7 +131,7 @@ export const products = [
     },
     {
         productId: "c9ab98fd-1fd6-4aa6-a88a-307e44cb1170",
-        userId: "6d2ba377-b219-4925-b6df-4cbc8575ce50",
+        userId: "9de81b64-1c4a-49d7-b9c5-7554d1d35df2",
         name: "Mens Casual Slim Fit",
         quantity: 1,
         price: 15.99,
@@ -148,7 +148,7 @@ export const products = [
         price: 695,
         description:
             "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
-        categoryId: 1003,
+        categoryId: 1004,
         //: "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg"
     },
     {
@@ -159,7 +159,7 @@ export const products = [
         price: 168,
         description:
             "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
-        categoryId: 1003,
+        categoryId: 1004,
         //: "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg"
     },
     {
@@ -170,7 +170,7 @@ export const products = [
         price: 9.99,
         description:
             "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...",
-        categoryId: 1003,
+        categoryId: 1004,
         //: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg"
     },
     {
@@ -181,7 +181,7 @@ export const products = [
         price: 10.99,
         description:
             "Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel",
-        categoryId: 1003,
+        categoryId: 1004,
         //: "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg"
     },
     {
@@ -192,7 +192,7 @@ export const products = [
         price: 64,
         description:
             "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system",
-        categoryId: 1003,
+        categoryId: 1001,
         //: "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
     },
     {
@@ -203,7 +203,7 @@ export const products = [
         price: 109,
         description:
             "Easy upgrade for faster boot up, shutdown, application load and response (As compared to 5400 RPM SATA 2.5” hard drive; Based on published specifications and internal benchmarking tests using PCMark vantage scores) Boosts burst write performance, making it ideal for typical PC workloads The perfect balance of performance and reliability Read/write speeds of up to 535MB/s/450MB/s (Based on internal testing; Performance may vary depending upon drive capacity, host device, OS and application.)",
-        categoryId: 1003,
+        categoryId: 1001,
         //: "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg"
     },
     {
@@ -214,7 +214,7 @@ export const products = [
         price: 109,
         description:
             "3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.",
-        categoryId: 1003,
+        categoryId: 1001,
         //: "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg"
     },
     {
@@ -225,7 +225,7 @@ export const products = [
         price: 114,
         description:
             "Expand your PS4 gaming experience, Play anywhere Fast and easy, setup Sleek design with high capacity, 3-year manufacturer's limited warranty",
-        categoryId: 1003,
+        categoryId: 1001,
         //: "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg"
     },
     {
@@ -236,7 +236,7 @@ export const products = [
         price: 599,
         description:
             "21. 5 inches Full HD (1920 x 1080) widescreen IPS display And Radeon free Sync technology. No compatibility for VESA Mount Refresh Rate: 75Hz - Using HDMI port Zero-frame design | ultra-thin | 4ms response time | IPS panel Aspect ratio - 16: 9. Color Supported - 16. 7 million colors. Brightness - 250 nit Tilt angle -5 degree to 15 degree. Horizontal viewing angle-178 degree. Vertical viewing angle-178 degree 75 hertz",
-        categoryId: 1003,
+        categoryId: 1001,
         //: "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
     },
     {
@@ -247,7 +247,7 @@ export const products = [
         price: 999.99,
         description:
             "49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag",
-        categoryId: 1003,
+        categoryId: 1001,
         //: "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg"
     },
     {
@@ -316,4 +316,38 @@ export const products = [
         categoryId: 1003,
         //: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
     },
+    {
+        productId: "02877f95-5376-4eb0-a698-665b9b5eab98",
+        userId: "9de81b64-1c4a-49d7-b9c5-7554d1d35df2",
+        quantity: 2,
+        name: "Mini Cooper Countryman 1.6 S 184cv At All4",
+        price: 3000,
+        description:
+            "The Mini Countryman is a B-segment SUV that the German manufacturer BMW put on sale in the third quarter of 2010. It has a five-door body, transverse front engine, front or four-wheel drive, and four or five seats.",
+        categoryId: 1006,
+        //: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
+    },
+    {
+        productId: "a009c1b5-c592-4282-b44f-d94ae2b22b29",
+        userId: "9de81b64-1c4a-49d7-b9c5-7554d1d35df2",
+        quantity: 3,
+        name: "Chevrolet Camaro 6.2 Coupe Ss V8",
+        price: 10000,
+        description:
+            "The Camaro Convertible has two power windows on each side (unlike the Coupe, which only has one on each side). This is because the small triangular rear glasses can also be raised or lowered.",
+        categoryId: 1006,
+        //: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
+    },
+    {
+        productId: "f0983987-6c38-4fac-afc3-16f125e4c7a0",
+        userId: "ef1795e2-c591-4544-8360-ca83cc1943e1",
+        quantity: 5,
+        name: "adidas MLS Club Soccer Ball",
+        price: 49,
+        description:
+            "Celebrating 25 consecutive years of elite club football in the US and Canada. Created for kickabouts, this adidas MLS Nativo XXV Club Ball has a dynamic design that's based on the look of the MLS official match ball.",
+        categoryId: 1005,
+        //: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
+    },
+
 ];
