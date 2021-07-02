@@ -28,7 +28,7 @@ export const reviews = [
       "Muy buenos los lentes parece re real. Lo recomiendo a menos que tengas epilepsia",
   },
   {
-    userId: "68f58789-37b2-4a60-838e-93c8eedf7fcc",
+    userId: "029c1d76-306f-4bf9-bb9c-32cd24533a59",
     productId: "2840efc4-c172-4961-bf8d-78c1bad3d1ee",
     score: 2,
     review:
