@@ -1,4 +1,4 @@
-# TiendApp-Client
+# TiendApp-Api
 
 *Deploy* : http://tiendapp.servebeer.com/
 
